@@ -50,6 +50,15 @@ export default function App() {
     "chemlab-section-progress",
     { knowledge: false, quiz: false, application: false },
   )
+  // Normalize stored shape (older builds may have a different object)
+  const safeSectionProgress =
+    sectionProgress &&
+    typeof sectionProgress === "object" &&
+    "knowledge" in sectionProgress &&
+    "quiz" in sectionProgress &&
+    "application" in sectionProgress
+      ? sectionProgress
+      : { knowledge: false, quiz: false, application: false }
   const [lockNotice, setLockNotice] = useState("")
   const [knowledgeTab, setKnowledgeTab] = useState<0 | 1 | null>(null)
   const [activeLessonTab, setActiveLessonTab] = useState("kien-thuc")
@@ -82,16 +91,16 @@ export default function App() {
   }
   const isSectionLocked = (id: string) => {
     if (id === "kien-thuc") return false
-    if (id === "luyen-tap") return !sectionProgress.knowledge
-    if (id === "van-dung") return !sectionProgress.knowledge || !sectionProgress.quiz
+    if (id === "luyen-tap") return !safeSectionProgress.knowledge
+    if (id === "van-dung") return !safeSectionProgress.knowledge || !safeSectionProgress.quiz
     return false
   }
   const lockReason = (id: string) => {
-    if (id === "luyen-tap" && !sectionProgress.knowledge)
+    if (id === "luyen-tap" && !safeSectionProgress.knowledge)
       return "Hoàn thành phần I – Kiến thức trước."
     if (id === "van-dung") {
-      if (!sectionProgress.knowledge) return "Hoàn thành phần I – Kiến thức trước."
-      if (!sectionProgress.quiz) return "Hoàn thành phần II – Luyện tập trước."
+      if (!safeSectionProgress.knowledge) return "Hoàn thành phần I – Kiến thức trước."
+      if (!safeSectionProgress.quiz) return "Hoàn thành phần II – Luyện tập trước."
     }
     return ""
   }
@@ -130,13 +139,13 @@ export default function App() {
   }, [showResults, studentName, score, questionBank.length, progressRecords])
   // Auto-mark quiz done once results show with passing score
   useEffect(() => {
-    if (showResults && score >= 6 && !sectionProgress.quiz) {
-      setSectionProgress({ ...sectionProgress, quiz: true })
+    if (showResults && score >= 6 && !safeSectionProgress.quiz) {
+      setSectionProgress({ ...safeSectionProgress, quiz: true })
     }
-  }, [showResults, score, sectionProgress, setSectionProgress])
+  }, [showResults, score, safeSectionProgress, setSectionProgress])
   const markKnowledgeDone = () => {
-    if (sectionProgress.knowledge) return
-    setSectionProgress({ ...sectionProgress, knowledge: true })
+    if (safeSectionProgress.knowledge) return
+    setSectionProgress({ ...safeSectionProgress, knowledge: true })
   }
   const hasEssayContent = essayAnswer.trim().length > 0
   const passesQuiz = hasCompletedQuiz && score >= 6
@@ -144,7 +153,7 @@ export default function App() {
 
   const finalizeCourse = () => {
     if (!canCompleteCourse) return
-    setSectionProgress({ ...sectionProgress, application: true })
+    setSectionProgress({ ...safeSectionProgress, application: true })
     setCourseCompleted(true)
   }
 
@@ -362,8 +371,7 @@ export default function App() {
             onChange={setKnowledgeTab}
             videoQuestions={videoQuestions}
             videoSource={videoSource}
-            knowledgeDone={sectionProgress.knowledge}
-            onAllKnowledgeDone={markKnowledgeDone}
+            knowledgeDone={safeSectionProgress.knowledge}
           />
         )}
 
