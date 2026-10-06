@@ -131,6 +131,15 @@ function App() {
     "chemlab-video-source",
     VIDEO_SOURCE,
   )
+  useEffect(() => {
+    const basePath = import.meta.env.BASE_URL
+    if (
+      videoSource.startsWith("/videos/") &&
+      !videoSource.startsWith(basePath)
+    ) {
+      setVideoSource(`${basePath}${videoSource.slice(1)}`)
+    }
+  }, [setVideoSource, videoSource])
   const [studentName, setStudentName] = useState("")
   const [teacherPasscode, setTeacherPasscode] = useState("")
   const [showTeacherLogin, setShowTeacherLogin] = useState(false)
