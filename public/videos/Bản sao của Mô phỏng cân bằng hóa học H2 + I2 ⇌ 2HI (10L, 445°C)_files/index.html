@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<!-- saved from url=(0663)https://c9ggde1rz9v68kz3.canvacode.com/codelet/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIn0..XTifuBS03Q12oaeX.R7Q3cCcbV8zSXkdaYboJgjw_lQRNFRQo7KXCFSTQrOB4a3U9jIhWdEf4K2v9IdNMw45jX4ddCDvIllgNymsALpAExUslXHuWSWtrLOzS8_3Xp8_-cpTq41JYvUd3JJjomImfqfq1T-W1o8PG18XCrdIQwyLaFgIV-Pi277CkZrke37F_wJbeS98z9uPgU25-Y9GdsFF4P5hXXCYD-73QsV5eYwhRFrcE-_nFK5c1odz0vUSm8k2lM_dkvE0-Jc7HabBL5TXycmCCpNrkl1Gr_BxQHw7UW9Q7tGs8gpHfIqe75mEI8VT2U8wmZ6Cu_m0xciOOLTWvcXCLVM59WHzPbzw3YpaEXxs7FciCDqcS_bH1LPz7jBzmhVVp63qbCR-%2D3iA22JqkaHuutWQgQpJHDum09v_YJckOKRU3bnAWkQJt14L7eVcLkGrnGzdiYbTMIad9RtP2GxGl9SeergNdcKrJX7QRK98cwg.8AA2i1jo9H4Oej2sVSTHMg/index.html?pin_id=f5f41a82bde93bb821ee440a77d31e0b -->
+<html lang="vi" style="height: 768px; --vh: 7.68px; overflow: visible; scrollbar-width: none; font-size: clamp(12px, 10.2241px + 0.4228vw, 16px);"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script src="./telemetry_sdk.js.download"></script>
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ảnh Hưởng Nồng Độ Đến Cân Bằng Hóa Học</title>
+  <script src="./3.4.17"></script>
+  <script src="./lucide.min.js.download"></script>
+  <link href="./css2" rel="stylesheet">
+  <style>
+        body { font-family: 'DM Sans', sans-serif; }
+        .tube-liquid { transition: background-color 2.5s ease; }
+        .spoon { transition: transform 1s ease-in-out; }
+        .spoon.pour { transform: translateY(40px) rotate(120deg); }
+        .dropper { transition: transform 0.8s ease-in-out; }
+        .dropper.squeeze { transform: translateY(30px) scaleY(0.9); }
+        .crystal {
+            position: absolute;
+            width: 4px; height: 4px;
+            background: #fff;
+            border-radius: 1px;
+            opacity: 0;
+            animation: fall 1.2s ease-in forwards;
+        }
+        @keyframes fall {
+            0% { opacity: 1; transform: translateY(0); }
+            100% { opacity: 0; transform: translateY(80px); }
+        }
+        .drop {
+            position: absolute;
+            width: 6px; height: 8px;
+            background: rgba(200,200,200,0.7);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            opacity: 0;
+            animation: drip 0.8s ease-in forwards;
+        }
+        @keyframes drip {
+            0% { opacity: 1; transform: translateY(0); }
+            100% { opacity: 0; transform: translateY(70px); }
+        }
+        .conc-bar { transition: width 2s ease; }
+        .tooltip-bubble {
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-8px);
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 11px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+            z-index: 50;
+            max-width: 220px;
+            white-space: normal;
+            text-align: center;
+        }
+        .tube-wrap:hover .tooltip-bubble { opacity: 1; }
+        .rack {
+            background: linear-gradient(to bottom, #78716c, #57534e);
+            border-radius: 6px;
+        }
+    </style>
+  <script src="./data_sdk.js.download" type="text/javascript"></script>
+  <script src="./resizing_sdk.js.download" type="text/javascript"></script>
+ <style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.pointer-events-none{pointer-events:none}.absolute{position:absolute}.relative{position:relative}.inset-1{inset:0.25rem}.left-1\/2{left:50%}.top-10{top:2.5rem}.top-6{top:1.5rem}.mx-auto{margin-left:auto;margin-right:auto}.mb-2{margin-bottom:0.5rem}.mb-4{margin-bottom:1rem}.mb-5{margin-bottom:1.25rem}.ml-3{margin-left:0.75rem}.mt-1{margin-top:0.25rem}.flex{display:flex}.grid{display:grid}.h-20{height:5rem}.h-3{height:0.75rem}.h-36{height:9rem}.h-4{height:1rem}.h-full{height:100%}.min-h-screen{min-height:100vh}.w-10{width:2.5rem}.w-3{width:0.75rem}.w-6{width:1.5rem}.w-full{width:100%}.max-w-5xl{max-width:64rem}.flex-1{flex:1 1 0%}.-translate-x-1\/2{--tw-translate-x:-50%;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.cursor-pointer{cursor:pointer}.grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.flex-col{flex-direction:column}.items-end{align-items:flex-end}.items-center{align-items:center}.justify-center{justify-content:center}.gap-0{gap:0px}.gap-16{gap:4rem}.gap-2{gap:0.5rem}.gap-3{gap:0.75rem}.gap-4{gap:1rem}.overflow-hidden{overflow:hidden}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:0.5rem}.rounded-xl{border-radius:0.75rem}.rounded-b-full{border-bottom-right-radius:9999px;border-bottom-left-radius:9999px}.border-2{border-width:2px}.border-slate-400\/60{border-color:rgb(148 163 184 / 0.6)}.border-yellow-400\/50{border-color:rgb(250 204 21 / 0.5)}.bg-blue-400{--tw-bg-opacity:1;background-color:rgb(96 165 250 / var(--tw-bg-opacity, 1))}.bg-gray-400{--tw-bg-opacity:1;background-color:rgb(156 163 175 / var(--tw-bg-opacity, 1))}.bg-rose-400{--tw-bg-opacity:1;background-color:rgb(251 113 133 / var(--tw-bg-opacity, 1))}.bg-slate-700{--tw-bg-opacity:1;background-color:rgb(51 65 85 / var(--tw-bg-opacity, 1))}.bg-white\/10{background-color:rgb(255 255 255 / 0.1)}.bg-yellow-400{--tw-bg-opacity:1;background-color:rgb(250 204 21 / var(--tw-bg-opacity, 1))}.p-2{padding:0.5rem}.p-4{padding:1rem}.px-3{padding-left:0.75rem;padding-right:0.75rem}.py-2\.5{padding-top:0.625rem;padding-bottom:0.625rem}.pb-4{padding-bottom:1rem}.pt-2{padding-top:0.5rem}.text-center{text-align:center}.text-2xl{font-size:1.5rem;line-height:2rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-bold{font-weight:700}.font-medium{font-weight:500}.ring-2{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)}.ring-yellow-400\/20{--tw-ring-color:rgb(250 204 21 / 0.2)}.hover\:bg-white\/20:hover{background-color:rgb(255 255 255 / 0.2)}@media (min-width: 640px){.sm\:h-44{height:11rem}.sm\:w-12{width:3rem}.sm\:grid-cols-4{grid-template-columns:repeat(4, minmax(0, 1fr))}.sm\:gap-24{gap:6rem}.sm\:gap-8{gap:2rem}.sm\:px-5{padding-left:1.25rem;padding-right:1.25rem}}</style><style>.min-h-screen { min-height: calc(100 * min(var(--vh, 1vh), 1vh)) !important; }</style></head>
+ <body data-template-id="__page-root" class="min-h-screen" style="background-image: linear-gradient(135deg, rgb(15, 23, 42), rgb(30, 41, 59)) !important; background-clip: border-box !important; background-size: 100vw 100vh !important;">
+  <div class="w-full max-w-5xl mx-auto p-4">
+   <header class="text-center mb-4">
+    <h1 data-template-id="main-title" class="canva-text text-2xl font-bold" style="white-space: pre-wrap !important; overflow-wrap: normal !important; line-height: normal !important; color: rgb(241, 245, 249) !important; --canva-color: #f1f5f9ff; caret-color: rgb(241, 245, 249) !important; font-family: YAD1aU3sLnI_0, auto !important; font-weight: 700 !important; font-style: normal !important; font-size: 1.375rem !important;" data-canva-font-size="1.375rem"><canva-span style="color: initial">🧪</canva-span> Ảnh Hưởng Nồng Độ Đến Sự Dịch Chuyển Cân Bằng Hóa Học</h1>
+    <p data-template-id="subtitle" class="canva-text mt-1 text-sm" data-canva-font-size="1rem" style="white-space: pre-wrap !important; overflow-wrap: normal !important; line-height: normal !important; color: rgb(148, 163, 184) !important; --canva-color: #94a3b8ff; caret-color: rgb(148, 163, 184) !important; font-family: YAD1aU3sLnI_0, auto !important; font-weight: 400 !important; font-style: normal !important; font-size: 1rem !important;">CH₃COO⁻ + H₂O ⇌ CH₃COOH + OH⁻ • Chỉ thị phenolphthalein • Mô phỏng tương tác</p>
+   </header><!-- Concentration Bars -->
+   <div data-template-id="conc-panel" class="canva-panel rounded-xl p-4 mb-4" style="background-image: linear-gradient(rgb(30, 41, 59), rgb(30, 41, 59)) !important; background-clip: border-box !important;">
+    <div class="flex items-center gap-3 mb-2"><span data-template-id="conc-label-reactant" class="canva-text text-xs font-medium" data-canva-font-size="1rem" style="white-space: pre-wrap !important; overflow-wrap: normal !important; line-height: normal !important; color: rgb(147, 197, 253) !important; --canva-color: #93c5fdff; caret-color: rgb(147, 197, 253) !important; font-family: YAD1aU3sLnI_0, auto !important; font-weight: 400 !important; font-style: normal !important; font-size: 1rem !important;">[CH₃COO⁻] Chất tham gia</span>
+     <div class="flex-1 h-4 bg-slate-700 rounded-full overflow-hidden">
+      <div class="conc-bar h-full rounded-full bg-blue-400" id="bar-reactant" style="width:50%"></div>
+     </div>
+    </div>
+    <div class="flex items-center gap-3"><span data-template-id="conc-label-product" class="canva-text text-xs font-medium" data-canva-font-size="1rem" style="white-space: pre-wrap !important; overflow-wrap: normal !important; line-height: normal !important; color: rgb(252, 165, 165) !important; --canva-color: #fca5a5ff; caret-color: rgb(252, 165, 165) !important; font-family: YAD1aU3sLnI_0, auto !important; font-weight: 400 !important; font-style: normal !important; font-size: 1rem !important;">[CH₃COOH] Sản phẩm</span>
+     <div class="flex-1 h-4 bg-slate-700 rounded-full overflow-hidden">
+      <div class="conc-bar h-full rounded-full bg-rose-400" id="bar-product" style="width:50%"></div>
+     </div>
+    </div>
+   </div><!-- Lab Bench -->
+   <div class="relative flex flex-col items-center mb-5" style="min-height:320px;"><!-- Tools above tubes -->
+    <div class="flex justify-center gap-16 sm:gap-24 mb-2 relative" style="min-height:50px;"><!-- Spoon above tube 2 -->
+     <div class="flex flex-col items-center relative" id="spoon-area">
+      <div class="spoon cursor-pointer" id="spoon" title="Thìa tinh thể CH₃COONa">
+       <svg width="40" height="24" viewBox="0 0 40 24"><rect x="18" y="10" width="22" height="3" rx="1.5" fill="#a8a29e"></rect> <ellipse cx="14" cy="12" rx="14" ry="10" fill="#d6d3d1" stroke="#78716c" stroke-width="1"></ellipse> <circle cx="10" cy="10" r="2" fill="#fff"></circle> <circle cx="16" cy="13" r="1.5" fill="#fff"></circle> <circle cx="12" cy="15" r="1.8" fill="#f5f5f4"></circle> <circle cx="8" cy="13" r="1.2" fill="#fff"></circle>
+       </svg>
+      </div>
+      <div id="crystal-container" class="absolute top-6 left-1/2 -translate-x-1/2 w-10 h-20 pointer-events-none"></div>
+     </div><!-- spacer for tube 1 -->
+     <div class="w-10"></div><!-- Dropper above tube 3 -->
+     <div class="flex flex-col items-center relative" id="dropper-area">
+      <div class="dropper cursor-pointer" id="dropper" title="Ống nhỏ giọt CH₃COOH">
+       <svg width="20" height="40" viewBox="0 0 20 40"><rect x="7" y="0" width="6" height="12" rx="3" fill="#ef4444" opacity="0.7"></rect> <rect x="8" y="12" width="4" height="22" rx="1" fill="#e5e7eb" stroke="#9ca3af" stroke-width="0.5"></rect> <path d="M9 34 L11 34 L10 38 Z" fill="#9ca3af"></path>
+       </svg>
+      </div>
+      <div id="drop-container" class="absolute top-10 left-1/2 -translate-x-1/2 w-6 h-20 pointer-events-none"></div>
+     </div>
+    </div><!-- Test tube rack -->
+    <div class="flex items-end gap-0"><!-- Rack background -->
+     <div class="relative flex items-end">
+      <div class="rack px-3 sm:px-5 pt-2 pb-4 flex items-end gap-4 sm:gap-8"><!-- Tube 2 -->
+       <div class="tube-wrap flex flex-col items-center relative" id="tube2-wrap">
+        <div class="tooltip-bubble" id="tooltip-2"></div>
+        <div class="w-3 h-3 rounded-full bg-gray-400 mx-auto"></div>
+        <div class="w-10 h-36 sm:w-12 sm:h-44 border-2 border-slate-400/60 rounded-b-full relative overflow-hidden bg-white/10" id="tube2">
+         <div class="tube-liquid absolute inset-1 rounded-b-full" id="tube2-liquid" style="background-color:transparent;"></div>
+        </div><span data-template-id="tube2-label" class="canva-text text-xs mt-1 font-medium" data-canva-font-size="1rem" style="white-space: pre-wrap !important; overflow-wrap: normal !important; line-height: normal !important; color: rgb(147, 197, 253) !important; --canva-color: #93c5fdff; caret-color: rgb(147, 197, 253) !important; font-family: YAD1aU3sLnI_0, auto !important; font-weight: 400 !important; font-style: normal !important; font-size: 1rem !important;">Ống (2)</span>
+       </div><!-- Tube 1 (Control) -->
+       <div class="tube-wrap flex flex-col items-center relative" id="tube1-wrap">
+        <div class="tooltip-bubble" id="tooltip-1"></div>
+        <div class="w-3 h-3 rounded-full bg-yellow-400 mx-auto"></div>
+        <div class="w-10 h-36 sm:w-12 sm:h-44 border-2 border-yellow-400/50 rounded-b-full relative overflow-hidden bg-white/10 ring-2 ring-yellow-400/20" id="tube1">
+         <div class="tube-liquid absolute inset-1 rounded-b-full" id="tube1-liquid" style="background-color:transparent;"></div>
+        </div><span data-template-id="tube1-label" class="canva-text text-xs mt-1 font-medium" data-canva-font-size="1rem" style="white-space: pre-wrap !important; overflow-wrap: normal !important; line-height: normal !important; color: rgb(251, 191, 36) !important; --canva-color: #fbbf24ff; caret-color: rgb(251, 191, 36) !important; font-family: YAD1aU3sLnI_0, auto !important; font-weight: 400 !important; font-style: normal !important; font-size: 1rem !important;">Ống (1) Đối chứng</span>
+       </div><!-- Tube 3 -->
+       <div class="tube-wrap flex flex-col items-center relative" id="tube3-wrap">
+        <div class="tooltip-bubble" id="tooltip-3"></div>
+        <div class="w-3 h-3 rounded-full bg-gray-400 mx-auto"></div>
+        <div class="w-10 h-36 sm:w-12 sm:h-44 border-2 border-slate-400/60 rounded-b-full relative overflow-hidden bg-white/10" id="tube3">
+         <div class="tube-liquid absolute inset-1 rounded-b-full" id="tube3-liquid" style="background-color:transparent;"></div>
+        </div><span data-template-id="tube3-label" class="canva-text text-xs mt-1 font-medium" data-canva-font-size="1rem" style="white-space: pre-wrap !important; overflow-wrap: normal !important; line-height: normal !important; color: rgb(252, 165, 165) !important; --canva-color: #fca5a5ff; caret-color: rgb(252, 165, 165) !important; font-family: YAD1aU3sLnI_0, auto !important; font-weight: 400 !important; font-style: normal !important; font-size: 1rem !important;">Ống (3)</span>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div><!-- Controls -->
+   <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-4"><button data-template-id="btn-prepare" class="canva-button px-3 py-2.5 rounded-lg font-medium text-sm" onclick="prepare()" style="background-image: linear-gradient(rgb(34, 197, 94), rgb(34, 197, 94)) !important; background-clip: border-box !important; white-space: pre-wrap !important; overflow-wrap: normal !important; line-height: normal !important; color: rgb(255, 255, 255) !important; --canva-color: #ffffffff; caret-color: rgb(255, 255, 255) !important; font-family: YAD1aU3sLnI_0, auto !important; font-weight: 700 !important; font-style: normal !important; font-size: 1rem !important;" data-canva-font-size="1rem"><canva-span style="color: initial">✅</canva-span> Chuẩn bị mẫu</button> <button data-template-id="btn-add-crystal" class="canva-button px-3 py-2.5 rounded-lg font-medium text-sm" onclick="addCrystal()" style="background-image: linear-gradient(rgb(59, 130, 246), rgb(59, 130, 246)) !important; background-clip: border-box !important; white-space: pre-wrap !important; overflow-wrap: normal !important; line-height: normal !important; color: rgb(255, 255, 255) !important; --canva-color: #ffffffff; caret-color: rgb(255, 255, 255) !important; font-family: YAD1aU3sLnI_0, auto !important; font-weight: 700 !important; font-style: normal !important; font-size: 1rem !important;" data-canva-font-size="1rem"><canva-span style="color: initial">🧂</canva-span> Thêm tinh thể vào Ống (2)</button> <button data-template-id="btn-add-acid" class="canva-button px-3 py-2.5 rounded-lg font-medium text-sm" onclick="addAcid()" style="background-image: linear-gradient(rgb(245, 158, 11), rgb(245, 158, 11)) !important; background-clip: border-box !important; white-space: pre-wrap !important; overflow-wrap: normal !important; line-height: normal !important; color: rgb(255, 255, 255) !important; --canva-color: #ffffffff; caret-color: rgb(255, 255, 255) !important; font-family: YAD1aU3sLnI_0, auto !important; font-weight: 700 !important; font-style: normal !important; font-size: 1rem !important;" data-canva-font-size="1rem"><canva-span style="color: initial">💧</canva-span> Nhỏ CH₃COOH vào Ống (3)</button> <button data-template-id="btn-reset" class="canva-button px-3 py-2.5 rounded-lg font-medium text-sm" onclick="resetAll()" style="background-image: linear-gradient(rgb(107, 114, 128), rgb(107, 114, 128)) !important; background-clip: border-box !important; white-space: pre-wrap !important; overflow-wrap: normal !important; line-height: normal !important; color: rgb(255, 255, 255) !important; --canva-color: #ffffffff; caret-color: rgb(255, 255, 255) !important; font-family: YAD1aU3sLnI_0, auto !important; font-weight: 700 !important; font-style: normal !important; font-size: 1rem !important;" data-canva-font-size="1rem"><canva-span style="color: initial">🔄</canva-span> Đặt lại</button>
+   </div><!-- Status -->
+   <p data-template-id="status-text" id="status-text" class="canva-text text-center text-sm font-medium mb-4" style="color: rgb(251, 191, 36) !important; --canva-color: #fbbf24ff; caret-color: rgb(251, 191, 36) !important; font-weight: 500 !important; font-style: normal !important;">Nhấn "Chuẩn bị" để bắt đầu thí nghiệm.</p><!-- Sound toggle -->
+   <div class="flex items-center gap-2 justify-center mb-4"><button id="sound-toggle" class="p-2 rounded-lg bg-white/10 hover:bg-white/20" onclick="toggleSound()"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="volume-2" style="width:18px;height:18px;color:#e2e8f0;" class="lucide lucide-volume-2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path></svg> </button> <span data-template-id="sound-label" class="canva-text text-xs" data-canva-font-size="1rem" style="white-space: pre-wrap !important; overflow-wrap: normal !important; line-height: normal !important; color: rgb(148, 163, 184) !important; --canva-color: #94a3b8ff; caret-color: rgb(148, 163, 184) !important; font-family: YAD1aU3sLnI_0, auto !important; font-weight: 400 !important; font-style: normal !important; font-size: 1rem !important;">Âm thanh</span> <button id="music-toggle" class="p-2 rounded-lg bg-white/10 hover:bg-white/20 ml-3" onclick="toggleMusic()"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="music" style="width:18px;height:18px;color:#e2e8f0;" class="lucide lucide-music"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg> </button> <span data-template-id="music-label" class="canva-text text-xs" data-canva-font-size="1rem" style="white-space: pre-wrap !important; overflow-wrap: normal !important; line-height: normal !important; color: rgb(148, 163, 184) !important; --canva-color: #94a3b8ff; caret-color: rgb(148, 163, 184) !important; font-family: YAD1aU3sLnI_0, auto !important; font-weight: 400 !important; font-style: normal !important; font-size: 1rem !important;">Nhạc nền</span>
+   </div>
+  </div>
+  <script src="./editing_sdk.js.download"></script>
+  <script>
+    lucide.createIcons();
+
+    let prepared = false;
+    let tube2Done = false;
+    let tube3Done = false;
+    let soundEnabled = true;
+    let musicEnabled = false;
+    let audioCtx;
+    let musicInterval = null;
+
+    const PINK_LIGHT = 'rgba(244,114,182,0.35)';
+    const PINK_DEEP = 'rgba(190,24,93,0.75)';
+    const TRANSPARENT = 'rgba(200,200,200,0.05)';
+
+    function getAudioCtx() {
+        if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        return audioCtx;
+    }
+
+    function playTone(freq, duration, type='sine', vol=0.08) {
+        if (!soundEnabled) return;
+        const ac = getAudioCtx();
+        const osc = ac.createOscillator();
+        const gain = ac.createGain();
+        osc.type = type; osc.frequency.value = freq;
+        gain.gain.setValueAtTime(vol, ac.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, ac.currentTime + duration);
+        osc.connect(gain); gain.connect(ac.destination);
+        osc.start(); osc.stop(ac.currentTime + duration);
+    }
+
+    function playWaterPour() {
+        if (!soundEnabled) return;
+        for (let i = 0; i < 10; i++) {
+            setTimeout(() => playTone(700 + Math.random()*500, 0.07, 'sine', 0.03), i * 50);
+        }
+    }
+
+    function playCrystalDrop() {
+        if (!soundEnabled) return;
+        for (let i = 0; i < 6; i++) {
+            setTimeout(() => playTone(2000 + Math.random()*1500, 0.04, 'square', 0.03), i * 80);
+        }
+    }
+
+    function playTing() {
+        if (!soundEnabled) return;
+        playTone(1200, 0.3, 'sine', 0.1);
+        setTimeout(() => playTone(1600, 0.2, 'sine', 0.07), 150);
+    }
+
+    function playDroplet() {
+        if (!soundEnabled) return;
+        [0, 300, 600].forEach(d => setTimeout(() => {
+            playTone(600, 0.15, 'sine', 0.06);
+            setTimeout(() => playTone(400, 0.1, 'sine', 0.04), 50);
+        }, d));
+    }
+
+    function playGlassReset() {
+        if (!soundEnabled) return;
+        playTone(800, 0.08, 'triangle', 0.05);
+        setTimeout(() => playTone(600, 0.1, 'triangle', 0.04), 100);
+        setTimeout(() => playTone(1000, 0.06, 'triangle', 0.03), 200);
+    }
+
+    // Background music - simple pentatonic melody
+    function startMusic() {
+        if (musicInterval) return;
+        const notes = [523, 587, 659, 784, 880, 784, 659, 587];
+        let idx = 0;
+        musicInterval = setInterval(() => {
+            if (!musicEnabled) return;
+            const ac = getAudioCtx();
+            const osc = ac.createOscillator();
+            const gain = ac.createGain();
+            osc.type = 'sine';
+            osc.frequency.value = notes[idx % notes.length];
+            gain.gain.setValueAtTime(0.02, ac.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, ac.currentTime + 0.4);
+            osc.connect(gain); gain.connect(ac.destination);
+            osc.start(); osc.stop(ac.currentTime + 0.4);
+            idx++;
+        }, 500);
+    }
+
+    function stopMusic() {
+        if (musicInterval) { clearInterval(musicInterval); musicInterval = null; }
+    }
+
+    function setLiquid(id, color) {
+        document.getElementById(id).style.backgroundColor = color;
+    }
+
+    function setBars(reactant, product) {
+        document.getElementById('bar-reactant').style.width = reactant + '%';
+        document.getElementById('bar-product').style.width = product + '%';
+    }
+
+    function setTooltips() {
+        document.getElementById('tooltip-1').textContent = 'Ống đối chứng – không thay đổi';
+        document.getElementById('tooltip-2').textContent = tube2Done ? 'CB dịch chuyển chiều thuận do tăng [CH₃COO⁻] → tăng [OH⁻] → hồng đậm' : '';
+        document.getElementById('tooltip-3').textContent = tube3Done ? 'CB dịch chuyển chiều nghịch do tăng [CH₃COOH] → giảm [OH⁻] → mất màu' : '';
+    }
+
+    function prepare() {
+        prepared = true; tube2Done = false; tube3Done = false;
+        setLiquid('tube1-liquid', 'transparent');
+        setLiquid('tube2-liquid', 'transparent');
+        setLiquid('tube3-liquid', 'transparent');
+        setBars(50, 50);
+        document.getElementById('spoon').classList.remove('pour');
+        document.getElementById('dropper').classList.remove('squeeze');
+        setTooltips();
+        playWaterPour();
+
+        setTimeout(() => {
+            setLiquid('tube1-liquid', PINK_LIGHT);
+            setLiquid('tube2-liquid', PINK_LIGHT);
+            setLiquid('tube3-liquid', PINK_LIGHT);
+            document.getElementById('status-text').textContent = '✅ Dung dịch CH₃COONa + phenolphthalein có màu hồng nhạt. Sẵn sàng thao tác!';
+        }, 900);
+    }
+
+    function addCrystal() {
+        if (!prepared) { document.getElementById('status-text').textContent = '⚠️ Hãy nhấn "Chuẩn bị" trước!'; return; }
+        if (tube2Done) return;
+        tube2Done = true;
+
+        // Spoon animation
+        const spoon = document.getElementById('spoon');
+        spoon.classList.add('pour');
+        playCrystalDrop();
+
+        // Crystal particles
+        const container = document.getElementById('crystal-container');
+        for (let i = 0; i < 8; i++) {
+            setTimeout(() => {
+                const c = document.createElement('div');
+                c.className = 'crystal';
+                c.style.left = (Math.random() * 30 + 5) + 'px';
+                c.style.animationDelay = (Math.random() * 0.3) + 's';
+                container.appendChild(c);
+                setTimeout(() => c.remove(), 1500);
+            }, i * 100);
+        }
+
+        setTimeout(() => {
+            setLiquid('tube2-liquid', PINK_DEEP);
+            setBars(75, 35);
+            playTing();
+            spoon.classList.remove('pour');
+            setTooltips();
+            document.getElementById('status-text').textContent = '🧪 Thêm CH₃COONa → Tăng [CH₃COO⁻] → CB dịch chiều thuận → Tăng [OH⁻] → Màu hồng đậm!';
+        }, 1500);
+    }
+
+    function addAcid() {
+        if (!prepared) { document.getElementById('status-text').textContent = '⚠️ Hãy nhấn "Chuẩn bị" trước!'; return; }
+        if (tube3Done) return;
+        tube3Done = true;
+
+        const dropper = document.getElementById('dropper');
+        dropper.classList.add('squeeze');
+        playDroplet();
+
+        // Drop particles
+        const container = document.getElementById('drop-container');
+        [0, 350, 700].forEach((d, i) => {
+            setTimeout(() => {
+                const drop = document.createElement('div');
+                drop.className = 'drop';
+                drop.style.left = (6 + Math.random() * 4) + 'px';
+                container.appendChild(drop);
+                setTimeout(() => drop.remove(), 1000);
+            }, d);
+        });
+
+        setTimeout(() => {
+            setLiquid('tube3-liquid', TRANSPARENT);
+            setBars(50, 75);
+            dropper.classList.remove('squeeze');
+            setTooltips();
+            document.getElementById('status-text').textContent = '💧 Thêm CH₃COOH → Tăng [CH₃COOH] → CB dịch chiều nghịch → Giảm [OH⁻] → Mất màu!';
+        }, 1800);
+    }
+
+    function resetAll() {
+        prepared = false; tube2Done = false; tube3Done = false;
+        setLiquid('tube1-liquid', 'transparent');
+        setLiquid('tube2-liquid', 'transparent');
+        setLiquid('tube3-liquid', 'transparent');
+        setBars(50, 50);
+        document.getElementById('spoon').classList.remove('pour');
+        document.getElementById('dropper').classList.remove('squeeze');
+        document.getElementById('tooltip-1').textContent = '';
+        document.getElementById('tooltip-2').textContent = '';
+        document.getElementById('tooltip-3').textContent = '';
+        document.getElementById('status-text').textContent = 'Nhấn "Chuẩn bị" để bắt đầu thí nghiệm.';
+        playGlassReset();
+    }
+
+    function toggleSound() {
+        soundEnabled = !soundEnabled;
+        document.querySelector('#sound-toggle i').setAttribute('data-lucide', soundEnabled ? 'volume-2' : 'volume-x');
+        lucide.createIcons();
+    }
+
+    function toggleMusic() {
+        musicEnabled = !musicEnabled;
+        if (musicEnabled) { startMusic(); }
+        else { stopMusic(); }
+        document.querySelector('#music-toggle i').setAttribute('data-lucide', musicEnabled ? 'music' : 'music-2');
+        lucide.createIcons();
+    }
+
+    document.getElementById('status-text').textContent = 'Nhấn "Chuẩn bị" để bắt đầu thí nghiệm.';
+    </script>
+ 
+</body></html>

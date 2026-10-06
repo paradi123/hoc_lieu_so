@@ -1,0 +1,10 @@
+{
+  "description": "An interactive learning platform for high school students that explores chemical equilibrium concepts through engaging content, virtual experiments, and quizzes.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
