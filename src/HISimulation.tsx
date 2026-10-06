@@ -671,52 +671,20 @@ export default function HISimulation() {
 
       {error && <div className="hi-error" role="alert">{error}</div>}
 
-      <div className="hi-data-grid">
-        <section className="hi-chart-card">
-          <div className="hi-card-heading">
-            <div>
-              <span>BIỂU ĐỒ THỜI GIAN THỰC</span>
-              <h4>Nồng độ theo thời gian</h4>
-            </div>
-            <div className="chart-keys">
-              <span className="h2-line">H₂</span>
-              <span className="i2-line">I₂</span>
-              <span className="hi-line">HI</span>
-            </div>
+      <section className="hi-chart-card">
+        <div className="hi-card-heading">
+          <div>
+            <span>BIỂU ĐỒ THỜI GIAN THỰC</span>
+            <h4>Nồng độ theo thời gian</h4>
           </div>
-          <ConcentrationChart history={history} />
-        </section>
-
-        <section className="hi-result-card">
-          <div className="hi-card-heading">
-            <div>
-              <span>KẾT QUẢ</span>
-              <h4>Trạng thái cân bằng</h4>
-            </div>
-            <strong>Kc = 64</strong>
+          <div className="chart-keys">
+            <span className="h2-line">H₂</span>
+            <span className="i2-line">I₂</span>
+            <span className="hi-line">HI</span>
           </div>
-          <div className="result-table">
-            <div className="result-row result-head">
-              <span>Chất</span><span>Số mol</span><span>Nồng độ</span>
-            </div>
-            {(["h2", "i2", "hi"] as const).map((species) => (
-              <div className="result-row" key={species}>
-                <b>{species === "h2" ? "H₂" : species === "i2" ? "I₂" : "HI"}</b>
-                <span>{equilibrium ? equilibrium[species].toFixed(3) : "—"}</span>
-                <span>
-                  {equilibrium
-                    ? `${(equilibrium[species] / VOLUME).toFixed(3)} M`
-                    : "—"}
-                </span>
-              </div>
-            ))}
-          </div>
-          <div className="kc-check">
-            <span>KIỂM TRA</span>
-            <b><i>K</i><sub>C</sub> = [HI]² / ([H₂][I₂]) = 64</b>
-          </div>
-        </section>
-      </div>
+        </div>
+        <ConcentrationChart history={history} />
+      </section>
 
     </div>
   )
