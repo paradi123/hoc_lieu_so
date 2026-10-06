@@ -749,8 +749,25 @@ export default function App() {
             <span>
               <strong>CHEMLAB</strong>Học liệu số Hóa học 11
             </span>
+          <div className="footer-contributors">
+            <span className="footer-contributors-label">Người thực hiện dự án</span>
+            <ul>
+              <li>Phạm Việt Hương</li>
+              <li>Nguyễn Thị Phương Thảo</li>
+            </ul>
           </div>
-          <p>Nội dung mẫu • Sẵn sàng để giáo viên tùy chỉnh</p>
+          <div className="footer-school">
+            <img
+              src="/school-logo.png"
+              alt="Logo trường"
+              className="footer-school-logo"
+            />
+            <div className="footer-school-text">
+              <strong>Trường THCS &amp; THPT EduCation Vì Ngày Mai</strong>
+              <small>Đơn vị triển khai</small>
+            </div>
+          </div>
+        </div>
         </div>
       </footer>
 
