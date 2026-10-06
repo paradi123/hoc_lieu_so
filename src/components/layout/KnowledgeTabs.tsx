@@ -10,6 +10,8 @@ import Icon from "../common/Icon"
 import ConcentrationAssessment from "../exercises/ConcentrationAssessment"
 import PressureExercises from "../exercises/PressureExercises"
 import ExperimentFrame from "../simulations/ExperimentFrame"
+import { useEffect, useState } from "react"
+
 
 export interface KnowledgeTabsProps {
   activeTab: 0 | 1 | null
