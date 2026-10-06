@@ -3199,8 +3199,8 @@ input, select, textarea { font: inherit; }
 
 /* Essay writing — scientific layout */
 .essay-card {
+  border: 3px solid #0f2744;
   grid-template-columns: 1fr;
-  border: 1px solid var(--line);
   border-radius: var(--radius-xl);
   overflow: hidden;
   box-shadow: var(--shadow-md);
@@ -3232,69 +3232,63 @@ input, select, textarea { font: inherit; }
   line-height: 1.6;
 }
 .essay-panel {
-  padding: 28px 36px 24px;
-  background:
-    repeating-linear-gradient(
-      to bottom,
-      #ffffff 0,
-      #ffffff 27px,
-      #e2e8f0 27px,
-      #e2e8f0 28px
-    );
+  padding: 32px 36px 28px;
+  background: #ffffff;
   display: grid;
-  gap: 12px;
+  gap: 14px;
 }
 .essay-label {
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: 0.1em;
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
   color: #0f2744;
   text-transform: uppercase;
 }
 .essay-textarea {
   width: 100%;
-  min-height: 280px;
+  min-height: 320px;
   resize: vertical;
-  padding: 12px 16px 12px 56px;
-  font-family: "JetBrains Mono", "Fira Code", ui-monospace, SFMono-Regular,
-    Menlo, Consolas, monospace;
-  font-size: 14px;
-  line-height: 28px;
+  padding: 18px 22px;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.7;
   color: #0f172a;
-  background: transparent;
-  border: 1px solid #cbd5e1;
-  border-radius: 12px;
+  background: #ffffff;
+  border: 3px solid #0f2744;
+  border-radius: 14px;
   outline: none;
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
 .essay-textarea:focus {
   border-color: #14b8a6;
-  box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.18);
+  box-shadow: 0 0 0 4px rgba(20, 184, 166, 0.25);
 }
 .essay-textarea::placeholder {
-  color: #94a3b8;
-  font-style: italic;
+  color: #64748b;
+  font-weight: 500;
 }
 .essay-meta {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  font-size: 13px;
-  color: #475569;
+  font-size: 14px;
+  font-weight: 700;
+  color: #0f2744;
 }
 .essay-meta > span {
   font-variant-numeric: tabular-nums;
-  font-weight: 600;
+  font-weight: 800;
 }
 .essay-clear {
-  border: 1px solid #cbd5e1;
+  border: 2px solid #0f2744;
   background: white;
   color: #0f2744;
-  padding: 8px 14px;
-  border-radius: 8px;
-  font-size: 13px;
-  font-weight: 700;
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 800;
   cursor: pointer;
   transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
 }
@@ -3309,7 +3303,7 @@ input, select, textarea { font: inherit; }
 }
 @media (max-width: 768px) {
   .essay-card .scenario-brief { padding: 22px 22px; }
-  .essay-panel { padding: 20px 18px 18px; }
+  .essay-panel { padding: 24px 20px 22px; }
   .essay-textarea { padding-left: 18px; min-height: 220px; }
 }
 
