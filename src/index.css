@@ -3906,16 +3906,18 @@ footer {
 
 .footer-inner {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr) minmax(0, 1.3fr);
   align-items: center;
-  gap: 24px;
+  gap: 36px;
+  padding: 24px 0;
 }
 
 .footer-brand {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
   color: #38bdf8;
+  justify-content: flex-start;
 }
 .footer-brand strong {
   display: block;
@@ -3955,15 +3957,13 @@ footer {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 12px;
+  gap: 16px;
 }
 .footer-school-logo {
-  width: 56px;
-  height: 56px;
+  width: 96px;
+  height: 96px;
   object-fit: contain;
-  background: white;
-  border-radius: 12px;
-  padding: 4px;
+  flex: 0 0 auto;
 }
 .footer-school-text {
   display: flex;
