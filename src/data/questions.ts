@@ -2,12 +2,12 @@ import type { Question } from "../types/lesson"
 
 export const initialQuestions: Question[] = [
   {
-    question: "Phản ứng thuận nghịch là phản ứng?",
+    question: "Phản ứng thuận nghịch là phản ứng nào sau đây?",
     answers: [
       "Chỉ xảy ra theo một chiều nhất định.",
       "Xảy ra giữa hai chất khí.",
       "Xảy ra theo hai chiều ngược nhau trong cùng điều kiện.",
-      "Có phương trình hoá học được biểu diễn bằng mũi tên một chiều.",
+      "Có phương trình hóa học được biểu diễn bằng mũi tên một chiều.",
     ],
     correct: 2,
     explanation:
@@ -15,7 +15,7 @@ export const initialQuestions: Question[] = [
   },
   {
     question:
-      "Yếu tố nào sau đây luôn luôn không làm dịch chuyển cân bằng của hệ phản ứng?",
+      "Yếu tố nào sau đây luôn luôn không làm chuyển dịch cân bằng của hệ phản ứng?",
     answers: ["Nhiệt độ.", "Áp suất.", "Nồng độ.", "Chất xúc tác."],
     correct: 3,
     explanation:

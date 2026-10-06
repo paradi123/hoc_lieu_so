@@ -228,7 +228,7 @@ function ConcentrationAnalysisExercise({
     },
     {
       id: "tube-2-direction",
-      prompt: "Điều này cho thấy cân bằng của hệ đã dịch chuyển theo",
+      prompt: "Điều này cho thấy cân bằng của hệ đã chuyển dịch theo",
       options: ["chiều thuận", "chiều nghịch"],
       suffix: "để tiêu bớt lượng CH₃COONa vừa thêm vào.",
       answer: "chiều thuận",
@@ -243,14 +243,14 @@ function ConcentrationAnalysisExercise({
     {
       id: "tube-3-naoh",
       prompt:
-        "Màu hồng ở ống 3 bị nhạt đi hoặc mất màu chứng tỏ nồng độ NaOH đã bị",
+        "Màu hồng ở ống 3 bị nhạt đi hoặc mất màu chứng tỏ nồng độ NaOH đã",
       options: ["tăng lên", "giảm đi"],
       suffix: ".",
       answer: "giảm đi",
     },
     {
       id: "tube-3-direction",
-      prompt: "Điều này cho thấy cân bằng của hệ đã dịch chuyển theo",
+      prompt: "Điều này cho thấy cân bằng của hệ đã chuyển dịch theo",
       options: ["chiều thuận", "chiều nghịch"],
       suffix: "để tiêu bớt lượng CH₃COOH vừa được thêm vào.",
       answer: "chiều nghịch",
@@ -327,7 +327,7 @@ function ConcentrationRuleExercise({
     {
       id: "increase-concentration",
       before:
-        "Khi ta tăng nồng độ của một chất (tham gia hoặc sản phẩm), cân bằng sẽ dịch chuyển theo chiều làm",
+        "Khi ta tăng nồng độ của một chất (tham gia hoặc sản phẩm), cân bằng sẽ chuyển dịch theo chiều làm",
       after: "nồng độ chất đó (tức là chiều phản ứng tiêu thụ bớt chất đó).",
       options: ["tăng", "giảm"],
       answer: "giảm",
@@ -335,7 +335,7 @@ function ConcentrationRuleExercise({
     {
       id: "decrease-concentration",
       before:
-        "Ngược lại, khi ta giảm nồng độ của một chất, cân bằng sẽ dịch chuyển theo chiều làm",
+        "Ngược lại, khi ta giảm nồng độ của một chất, cân bằng sẽ chuyển dịch theo chiều làm",
       after: "nồng độ chất đó (tức là chiều phản ứng sinh ra thêm chất đó).",
       options: ["tăng", "giảm"],
       answer: "tăng",
@@ -366,7 +366,7 @@ function ConcentrationRuleExercise({
       </div>
       <p className="analysis-instruction">
         Từ các phân tích trên, hãy điền từ thích hợp để khái quát quy luật chung
-        về ảnh hưởng của nồng độ đến chiều dịch chuyển cân bằng hóa học.
+        về ảnh hưởng của nồng độ đến chiều chuyển dịch cân bằng hóa học.
       </p>
       <div className="rule-list">
         {blanks.map((blank, index) => (
@@ -460,7 +460,7 @@ export default function ConcentrationAssessment({
         {exercisesChecked && allExercisesCorrect && (
           <div className="concentration-theory-reveal">
             Khi tăng nồng độ một chất trong phản ứng thì cân bằng hóa học bị phá
-            vỡ và chuyển dịch theo chiều làm giảm nồng độ của chất đó và ngược
+            vỡ và chuyển dịch theo chiều làm giảm nồng độ của chất đó, và ngược
             lại.
           </div>
         )}

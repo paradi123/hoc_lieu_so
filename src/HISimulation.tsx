@@ -713,7 +713,7 @@ export default function HISimulation() {
           </div>
           <div className="kc-check">
             <span>KIỂM TRA</span>
-            <b>Kc = [HI]² / ([H₂][I₂]) = 64</b>
+            <b><i>K</i><sub>C</sub> = [HI]² / ([H₂][I₂]) = 64</b>
           </div>
         </section>
       </div>
