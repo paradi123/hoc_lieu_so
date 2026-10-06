@@ -47,6 +47,10 @@ export default function App() {
   const [showResults, setShowResults] = useState(false)
   const [knowledgeTab, setKnowledgeTab] = useState<0 | 1 | null>(null)
   const [activeLessonTab, setActiveLessonTab] = useState("kien-thuc")
+  const [essayAnswer, setEssayAnswer] = useLocalStorage<string>(
+    "chemlab-application-essay",
+    "",
+  )
   const [selectedAnswers, setSelectedAnswers] =
     useState<Record<number, number>>({})
   const progressSaved = useRef(false)
@@ -538,6 +542,47 @@ export default function App() {
                         <b>03</b>
                         <span>Đề xuất cách làm an toàn cho hệ sinh thái.</span>
                       </div>
+                    </div>
+                  </div>
+                </article>
+                <article className="scenario-card essay-card">
+                  <div className="scenario-brief">
+                    <span className="role-badge">
+                      <Icon name="pencil" size={18} /> BÀI TỰ LUẬN
+                    </span>
+                    <h3>Trình bày lời giải của bạn</h3>
+                    <p>
+                      Dựa trên tình huống phía trên, hãy viết câu trả lời tự luận
+                      của em vào ô bên dưới. Bài làm được lưu tự động trên trình
+                      duyệt này.
+                    </p>
+                  </div>
+                  <div className="essay-panel">
+                    <label htmlFor="application-essay" className="essay-label">
+                      Nội dung trả lời
+                    </label>
+                    <textarea
+                      id="application-essay"
+                      className="essay-textarea"
+                      rows={10}
+                      placeholder="Nhập câu trả lời tự luận của em tại đây..."
+                      value={essayAnswer}
+                      onChange={(event) => setEssayAnswer(event.target.value)}
+                    />
+                    <div className="essay-meta">
+                      <span>
+                        {essayAnswer.trim().length === 0
+                          ? "Chưa có nội dung"
+                          : `${essayAnswer.trim().length} ký tự`}
+                      </span>
+                      <button
+                        type="button"
+                        className="essay-clear"
+                        onClick={() => setEssayAnswer("")}
+                        disabled={essayAnswer.length === 0}
+                      >
+                        Xoá bài làm
+                      </button>
                     </div>
                   </div>
                 </article>

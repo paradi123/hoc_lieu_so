@@ -1,6 +1,6 @@
 import type React from "react"
 
-export type IconName = "atom" | "book" | "video" | "flask" | "quiz" | "arrow" | "check" | "close" | "external" | "spark"
+export type IconName = "atom" | "book" | "video" | "flask" | "quiz" | "arrow" | "check" | "close" | "external" | "spark" | "pencil"
 
 export default function Icon({
   name,
@@ -53,6 +53,12 @@ export default function Icon({
     ),
     spark: (
       <path d="m12 3 1.3 4.2L17 9l-3.7 1.8L12 15l-1.3-4.2L7 9l3.7-1.8zM18.5 15l.7 2.3 2.3.7-2.3.7-.7 2.3-.7-2.3-2.3-.7 2.3-.7z" />
+    ),
+    pencil: (
+      <>
+        <path d="M4 20h4l10.5-10.5a2.5 2.5 0 0 0 0-3.5l-1-1a2.5 2.5 0 0 0-3.5 0L4 15.5z" />
+        <path d="M13.5 7.5 16 10" />
+      </>
     ),
   }
 
