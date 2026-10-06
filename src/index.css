@@ -3197,6 +3197,122 @@ input, select, textarea { font: inherit; }
   flex: 0 0 auto;
 }
 
+/* Essay writing — scientific layout */
+.essay-card {
+  grid-template-columns: 1fr;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  background: #ffffff;
+  margin-top: 24px;
+  position: relative;
+}
+.essay-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 4px;
+  background: linear-gradient(90deg, #0f2744, #115e59, #14b8a6);
+}
+.essay-card .scenario-brief {
+  background: linear-gradient(135deg, #0f2744 0%, #134e4a 100%);
+  padding: 28px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.essay-card .scenario-brief h3 {
+  font-size: 22px;
+  margin: 8px 0 4px;
+}
+.essay-card .scenario-brief p {
+  color: #cbd5e1;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.essay-panel {
+  padding: 28px 36px 24px;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      #ffffff 0,
+      #ffffff 27px,
+      #e2e8f0 27px,
+      #e2e8f0 28px
+    );
+  display: grid;
+  gap: 12px;
+}
+.essay-label {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: #0f2744;
+  text-transform: uppercase;
+}
+.essay-textarea {
+  width: 100%;
+  min-height: 280px;
+  resize: vertical;
+  padding: 12px 16px 12px 56px;
+  font-family: "JetBrains Mono", "Fira Code", ui-monospace, SFMono-Regular,
+    Menlo, Consolas, monospace;
+  font-size: 14px;
+  line-height: 28px;
+  color: #0f172a;
+  background: transparent;
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.essay-textarea:focus {
+  border-color: #14b8a6;
+  box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.18);
+}
+.essay-textarea::placeholder {
+  color: #94a3b8;
+  font-style: italic;
+}
+.essay-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 13px;
+  color: #475569;
+}
+.essay-meta > span {
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+}
+.essay-clear {
+  border: 1px solid #cbd5e1;
+  background: white;
+  color: #0f2744;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+.essay-clear:hover:not(:disabled) {
+  background: #0f2744;
+  color: white;
+  border-color: #0f2744;
+}
+.essay-clear:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+@media (max-width: 768px) {
+  .essay-card .scenario-brief { padding: 22px 22px; }
+  .essay-panel { padding: 20px 18px 18px; }
+  .essay-textarea { padding-left: 18px; min-height: 220px; }
+}
+
 /* ==================== OVERLAYS & MODALS ==================== */
 .monitor-overlay {
   position: fixed;
