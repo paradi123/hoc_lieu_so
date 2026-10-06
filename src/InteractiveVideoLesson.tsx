@@ -2,7 +2,7 @@ import { useEffect, useRef, useState, type ReactNode } from "react"
 
 // ==================== DỮ LIỆU BÀI GIẢNG DỄ CHỈNH SỬA ====================
 export const VIDEO_LESSON_TITLE = "Ảnh hưởng của nhiệt độ đến chuyển dịch cân bằng"
-export const VIDEO_SOURCE = "/videos/bai-1-anh-huong-nhiet-do.mp4"
+export const VIDEO_SOURCE = `${import.meta.env.BASE_URL}videos/bai-1-anh-huong-nhiet-do.mp4`
 
 export type ChoiceQuestion = {
   id: string

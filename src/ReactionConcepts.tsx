@@ -5,7 +5,7 @@ import InteractiveVideoLesson, {
 } from "./InteractiveVideoLesson"
 
 const ONE_WAY_VIDEO_SOURCE =
-  "/videos/vid 1 Na2SO4 tác dụng với dung dịch BaCL2 - Giáo Dục Số (720p, h264).mp4"
+  `${import.meta.env.BASE_URL}videos/vid 1 Na2SO4 tác dụng với dung dịch BaCL2 - Giáo Dục Số (720p, h264).mp4`
 
 const ONE_WAY_QUESTIONS: VideoQuestion[] = [
   {
