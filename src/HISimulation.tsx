@@ -357,7 +357,7 @@ function ExperimentControl({
   onReset,
   disabled,
 }: {
-  title: string
+  title: React.ReactNode
   subtitle: string
   fields: Array<{
     key: "h2" | "i2" | "hi"
@@ -646,7 +646,7 @@ export default function HISimulation() {
         <div className="hi-controls-row">
           <ExperimentControl
             subtitle="THÍ NGHIỆM 1"
-            title="Theo chiều thuận"
+            title={<>H₂ + I₂ → 2HI</>}
             fields={[
               { key: "h2", label: "H₂", value: inputs.h2 },
               { key: "i2", label: "I₂", value: inputs.i2 },
@@ -659,7 +659,7 @@ export default function HISimulation() {
 
           <ExperimentControl
             subtitle="THÍ NGHIỆM 2"
-            title="Theo chiều nghịch"
+            title={<>2HI → H₂ + I₂</>}
             fields={[{ key: "hi", label: "HI", value: inputs.hi }]}
             onChange={updateInput}
             onRun={() => runExperiment(2)}
