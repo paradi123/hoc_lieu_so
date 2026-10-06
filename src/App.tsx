@@ -363,7 +363,7 @@ export default function App() {
             videoQuestions={videoQuestions}
             videoSource={videoSource}
             knowledgeDone={sectionProgress.knowledge}
-            onCompleteKnowledge={markKnowledgeDone}
+            onAllKnowledgeDone={markKnowledgeDone}
           />
         )}
 

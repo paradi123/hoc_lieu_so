@@ -17,7 +17,7 @@ export interface KnowledgeTabsProps {
   videoQuestions: VideoQuestion[]
   videoSource: string
   knowledgeDone: boolean
-  onCompleteKnowledge: () => void
+  onAllKnowledgeDone: () => void
 }
 export default function KnowledgeTabs({
   activeTab,
@@ -25,8 +25,14 @@ export default function KnowledgeTabs({
   videoQuestions,
   videoSource,
   knowledgeDone,
-  onCompleteKnowledge,
+  onAllKnowledgeDone,
 }: KnowledgeTabsProps) {
+  const [concentrationDone, setConcentrationDone] = useState(false)
+  const [pressureDone, setPressureDone] = useState(false)
+
+  useEffect(() => {
+    if (concentrationDone && pressureDone) onAllKnowledgeDone()
+  }, [concentrationDone, pressureDone, onAllKnowledgeDone])
   return (
     <section id="kien-thuc" className="content-section knowledge-section">
       {activeTab !== null && (
@@ -179,7 +185,7 @@ export default function KnowledgeTabs({
               prompt="CH₃COO⁻ + H₂O ⇌ CH₃COOH + OH⁻ • Chỉ thị phenolphthalein • Mô phỏng tương tác"
               simulation="hi"
             />
-            <ConcentrationAssessment />
+            <ConcentrationAssessment onComplete={() => setConcentrationDone(true)} />
             <ExperimentFrame
               index="03"
               title="Ảnh hưởng của áp suất đến sự chuyển dịch cân bằng hóa học"
@@ -201,8 +207,14 @@ export default function KnowledgeTabs({
                   Hoàn thành phần Kiến thức & mở khoá Luyện tập
                 </button>
               )}
+            {!knowledgeDone && (
+              <p className="knowledge-finish-hint">
+                Hoàn thành đủ cả hai phần bài tập (Nồng độ & Áp suất) để tự động
+                mở khoá phần Luyện tập.
+              </p>
+            )}
             </div>
-            <PressureExercises />
+            <PressureExercises onComplete={() => setPressureDone(true)} />
           </div>
         )}
       </div>

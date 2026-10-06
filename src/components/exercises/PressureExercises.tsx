@@ -267,7 +267,11 @@ function PressureObservationExercise({
   )
 }
 
-export default function PressureExercises() {
+export default function PressureExercises({
+  onComplete,
+}: {
+  onComplete?: () => void
+}) {
   const [checked, setChecked] = useState(false)
   const [questionOneCorrect, setQuestionOneCorrect] = useState(false)
   const [questionTwoCorrect, setQuestionTwoCorrect] = useState(false)
@@ -276,6 +280,9 @@ export default function PressureExercises() {
   const allCorrect =
     questionOneCorrect && questionTwoCorrect && conclusionCorrect
 
+  useEffect(() => {
+    if (checked && allCorrect && onComplete) onComplete()
+  }, [checked, allCorrect, onComplete])
   return (
     <>
       <PressureExercise

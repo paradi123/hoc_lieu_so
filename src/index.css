@@ -239,8 +239,14 @@ input, select, textarea { font: inherit; }
   font-weight: 800;
   color: #5eead4;
   font-size: 16px;
-  text-transform: uppercase;
   letter-spacing: 0.05em;
+}
+.knowledge-finish-hint {
+  margin: 14px 0 0;
+  color: #cbd5e1;
+  font-size: 13px;
+  font-weight: 600;
+  font-style: italic;
 }
 
 .topbar-user-area {
