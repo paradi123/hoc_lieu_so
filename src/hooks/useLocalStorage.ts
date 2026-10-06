@@ -6,7 +6,17 @@ export function useLocalStorage<T>(key: string, initialValue: T) {
     if (!stored) return initialValue
 
     try {
-      return JSON.parse(stored) as T
+      const parsed = JSON.parse(stored) as T
+      // Resync arrays (e.g. question bank) when initial length changes,
+      // so updates to the bundled defaults propagate without manual cache clearing.
+      if (
+        Array.isArray(initialValue) &&
+        Array.isArray(parsed) &&
+        parsed.length !== initialValue.length
+      ) {
+        return initialValue
+      }
+      return parsed
     } catch {
       return initialValue
     }
