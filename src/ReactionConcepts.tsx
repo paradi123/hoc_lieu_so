@@ -200,12 +200,18 @@ export function ReversibleReaction() {
           className="reaction-conclusion reversible-theory-card"
           aria-live="polite"
         >
-          <p className="reversible-temperature-text">
-            Khi tăng nhiệt độ, cân bằng chuyển dịch theo chiều làm giảm nhiệt độ,
-            tức là chiều phản ứng thu nhiệt (
-            <span className="chemistry-formula">Δ<sub>r</sub>H°<sub>298</sub> &gt; 0</span>
-            ), nghĩa là chiều làm giảm tác động của việc tăng nhiệt độ và ngược lại.
+          <p className="reversible-definition">
+            Phản ứng thuận nghịch là phản ứng xảy ra theo hai chiều ngược nhau
+            trong cùng điều kiện.
           </p>
+          <p className="reversible-explanation">
+            Phương trình hoá học của phản ứng thuận nghịch được biểu diễn bằng
+            hai nửa mũi tên ngược chiều nhau. Chiều từ trái sang phải là chiều
+            phản ứng thuận, chiều từ phải sang trái là chiều phản ứng nghịch.
+          </p>
+          <div className="conclusion-equation">
+            aA + bB ⇌ cC + dD
+          </div>
         </section>
       )}
     </article>
