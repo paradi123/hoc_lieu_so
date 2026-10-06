@@ -758,7 +758,7 @@ export default function App() {
           </div>
           <div className="footer-school">
             <img
-              src="/school-logo.png"
+              src="/school-logo.webp"
               alt="Logo trường"
               className="footer-school-logo"
             />

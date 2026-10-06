@@ -3906,7 +3906,7 @@ footer {
 
 .footer-inner {
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr) minmax(0, 1.3fr);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr) minmax(0, 1.5fr);
   align-items: center;
   gap: 36px;
   padding: 24px 0;
@@ -3960,8 +3960,8 @@ footer {
   gap: 16px;
 }
 .footer-school-logo {
-  width: 96px;
-  height: 96px;
+  width: 140px;
+  height: 140px;
   object-fit: contain;
   flex: 0 0 auto;
 }
