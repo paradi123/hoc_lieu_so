@@ -194,6 +194,7 @@ export default function KnowledgeTabs({
               prompt="Nén hoặc kéo pít-tông để thay đổi thể tích, áp suất và quan sát cân bằng 2NO₂(g) ⇌ N₂O₄(g)."
               simulation="pressure"
             />
+            <PressureExercises onComplete={() => setPressureDone(true)} />
             <div className="knowledge-finish-bar">
               {knowledgeDone ? (
                 <div className="knowledge-finish-done">
@@ -209,14 +210,13 @@ export default function KnowledgeTabs({
                   Hoàn thành phần Kiến thức & mở khoá Luyện tập
                 </button>
               )}
-            {!knowledgeDone && (
-              <p className="knowledge-finish-hint">
-                Hoàn thành đủ cả hai phần bài tập (Nồng độ & Áp suất) để tự động
-                mở khoá phần Luyện tập.
-              </p>
-            )}
+              {!knowledgeDone && (
+                <p className="knowledge-finish-hint">
+                  Hoàn thành đủ cả hai phần bài tập (Nồng độ & Áp suất) để tự động
+                  mở khoá phần Luyện tập.
+                </p>
+              )}
             </div>
-            <PressureExercises onComplete={() => setPressureDone(true)} />
           </div>
         )}
       </div>

@@ -747,8 +747,11 @@ export default function App() {
           <div className="footer-brand">
             <Icon name="atom" />
             <span>
-              <strong>CHEMLAB</strong>Học liệu số Hóa học 11
+              <strong>CHEMLAB</strong>
+              <span className="footer-brand-sub">Học liệu số Hóa học 11</span>
             </span>
+          </div>
+          <span className="footer-divider" aria-hidden="true" />
           <div className="footer-contributors">
             <span className="footer-contributors-label">Người thực hiện dự án</span>
             <ul>
@@ -756,18 +759,18 @@ export default function App() {
               <li>Nguyễn Thị Phương Thảo</li>
             </ul>
           </div>
+          <span className="footer-divider" aria-hidden="true" />
           <div className="footer-school">
+            <div className="footer-school-text">
+              <strong>Trường Đại học Giáo dục - Đại học Quốc gia Hà Nội</strong>
+              <small>Đơn vị triển khai</small>
+            </div>
             <img
               src="/school-logo.webp"
               alt="Logo trường"
               className="footer-school-logo"
             />
-            <div className="footer-school-text">
-              <strong>Trường THCS &amp; THPT EduCation Vì Ngày Mai</strong>
-              <small>Đơn vị triển khai</small>
-            </div>
           </div>
-        </div>
         </div>
       </footer>
 

@@ -207,30 +207,49 @@ input, select, textarea { font: inherit; }
 }
 
 .knowledge-finish-bar {
-  margin-top: 28px;
-  padding: 24px;
+  margin: 48px auto 0;
+  max-width: 720px;
+  padding: 32px 28px;
   background: linear-gradient(135deg, #0f2744, #115e59);
   border-radius: var(--radius-xl);
   text-align: center;
   color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  box-shadow: 0 12px 32px rgba(15, 39, 68, 0.18);
 }
 .knowledge-finish-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
   border: 0;
   background: white;
   color: #0f2744;
-  padding: 14px 28px;
+  padding: 16px 32px;
   border-radius: 12px;
   font-size: 15px;
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   cursor: pointer;
-  transition: transform 0.15s ease, background 0.15s ease;
+  transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+.knowledge-finish-button::after {
+  content: "→";
+  font-size: 18px;
+  transition: transform 0.15s ease;
 }
 .knowledge-finish-button:hover {
   background: #14b8a6;
   color: white;
   transform: translateY(-2px);
+}
+.knowledge-finish-button:hover::after {
+  transform: translateX(4px);
 }
 .knowledge-finish-done {
   display: inline-flex;
@@ -242,13 +261,14 @@ input, select, textarea { font: inherit; }
   letter-spacing: 0.05em;
 }
 .knowledge-finish-hint {
-  margin: 14px 0 0;
+  margin: 0;
   color: #cbd5e1;
   font-size: 13px;
   font-weight: 600;
   font-style: italic;
+  max-width: 560px;
+  line-height: 1.5;
 }
-
 .topbar-user-area {
   display: flex;
   align-items: center;
@@ -3906,39 +3926,49 @@ footer {
 
 .footer-inner {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr) minmax(0, 1.5fr);
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1.1fr);
   align-items: center;
-  gap: 36px;
-  padding: 24px 0;
+  gap: 24px 28px;
+  padding: 8px 0;
 }
-
+.footer-divider {
+  width: 1px;
+  height: 56px;
+  background: linear-gradient(180deg, transparent, #1e293b 30%, #1e293b 70%, transparent);
+  justify-self: center;
+}
 .footer-brand {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
   color: #38bdf8;
   justify-content: flex-start;
+  min-width: 0;
 }
 .footer-brand strong {
   display: block;
   color: white;
-  font-size: 16px;
+  font-size: 15px;
   letter-spacing: 0.06em;
+  line-height: 1.2;
 }
-.footer-brand span {
+.footer-brand .footer-brand-sub {
+  display: block;
   color: #94a3b8;
-  font-size: 13px;
+  font-size: 12px;
+  margin-top: 2px;
+  line-height: 1.3;
 }
-
 .footer-contributors {
   text-align: center;
   color: #cbd5e1;
+  min-width: 0;
 }
 .footer-contributors-label {
   display: block;
-  font-size: 11px;
+  font-size: 10.5px;
   font-weight: 800;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: #14b8a6;
   margin-bottom: 6px;
@@ -3949,37 +3979,42 @@ footer {
   padding: 0;
   display: grid;
   gap: 2px;
-  font-size: 14px;
-  font-weight: 700;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.45;
 }
-
 .footer-school {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 16px;
+  gap: 14px;
+  min-width: 0;
 }
 .footer-school-logo {
-  width: 140px;
-  height: 140px;
+  width: 64px;
+  height: 64px;
   object-fit: contain;
   flex: 0 0 auto;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  padding: 4px;
 }
 .footer-school-text {
   display: flex;
   flex-direction: column;
-  gap: 2px;
-  text-align: right;
+  gap: 3px;
+  min-width: 0;
 }
 .footer-school-text strong {
   color: white;
-  font-size: 14px;
-  font-weight: 800;
+  font-size: 13.5px;
+  font-weight: 700;
+  line-height: 1.35;
 }
 .footer-school-text small {
-  font-size: 11px;
+  font-size: 10.5px;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: #14b8a6;
 }
@@ -3989,13 +4024,24 @@ footer p {
   font-size: 13px;
   color: #64748b;
 }
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .footer-inner {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    row-gap: 24px;
+    column-gap: 24px;
     text-align: center;
   }
-  .footer-school { justify-content: center; }
-  .footer-school-text { text-align: left; }
+  .footer-divider { display: none; }
+  .footer-brand { justify-content: center; }
+  .footer-contributors { grid-column: 1 / -1; }
+  .footer-school { grid-column: 1 / -1; justify-content: center; text-align: center; }
+  .footer-school-text { text-align: center; }
+}
+@media (max-width: 560px) {
+  .footer-inner {
+    grid-template-columns: 1fr;
+  }
+  .footer-school-logo { width: 56px; height: 56px; }
 }
 
 .mobile-nav { display: none; }
