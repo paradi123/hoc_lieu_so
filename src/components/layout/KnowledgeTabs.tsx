@@ -16,13 +16,16 @@ export interface KnowledgeTabsProps {
   onChange: (tab: 0 | 1 | null) => void
   videoQuestions: VideoQuestion[]
   videoSource: string
+  knowledgeDone: boolean
+  onCompleteKnowledge: () => void
 }
-
 export default function KnowledgeTabs({
   activeTab,
   onChange,
   videoQuestions,
   videoSource,
+  knowledgeDone,
+  onCompleteKnowledge,
 }: KnowledgeTabsProps) {
   return (
     <section id="kien-thuc" className="content-section knowledge-section">
@@ -183,6 +186,22 @@ export default function KnowledgeTabs({
               prompt="Nén hoặc kéo pít-tông để thay đổi thể tích, áp suất và quan sát cân bằng 2NO₂(g) ⇌ N₂O₄(g)."
               simulation="pressure"
             />
+            <div className="knowledge-finish-bar">
+              {knowledgeDone ? (
+                <div className="knowledge-finish-done">
+                  <Icon name="check" size={18} />
+                  Bạn đã hoàn thành phần Kiến thức. Phần Luyện tập đã được mở.
+                </div>
+              ) : (
+                <button
+                  type="button"
+                  className="knowledge-finish-button"
+                  onClick={onCompleteKnowledge}
+                >
+                  Hoàn thành phần Kiến thức & mở khoá Luyện tập
+                </button>
+              )}
+            </div>
             <PressureExercises />
           </div>
         )}

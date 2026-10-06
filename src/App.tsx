@@ -46,6 +46,11 @@ export default function App() {
   const [hasStarted, setHasStarted] = useState(false)
   const [showResults, setShowResults] = useState(false)
   const [courseCompleted, setCourseCompleted] = useState(false)
+  const [sectionProgress, setSectionProgress] = useLocalStorage(
+    "chemlab-section-progress",
+    { knowledge: false, quiz: false, application: false },
+  )
+  const [lockNotice, setLockNotice] = useState("")
   const [knowledgeTab, setKnowledgeTab] = useState<0 | 1 | null>(null)
   const [activeLessonTab, setActiveLessonTab] = useState("kien-thuc")
   const [essayAnswer, setEssayAnswer] = useLocalStorage<string>(
@@ -62,12 +67,33 @@ export default function App() {
     })
 
   const goToSection = (id: string) => {
+    if (isSectionLocked(id)) {
+      setLockNotice(lockReason(id))
+      window.scrollTo({ top: 0, behavior: "smooth" })
+      return
+    }
+    setLockNotice("")
     const nextTab = ["kham-pha", "video-bai-giang", "thi-nghiem"].includes(id)
       ? "kien-thuc"
       : id
     setActiveLessonTab(nextTab)
     if (nextTab === "kien-thuc") setKnowledgeTab(null)
     window.scrollTo({ top: 0, behavior: "smooth" })
+  }
+  const isSectionLocked = (id: string) => {
+    if (id === "kien-thuc") return false
+    if (id === "luyen-tap") return !sectionProgress.knowledge
+    if (id === "van-dung") return !sectionProgress.knowledge || !sectionProgress.quiz
+    return false
+  }
+  const lockReason = (id: string) => {
+    if (id === "luyen-tap" && !sectionProgress.knowledge)
+      return "Hoàn thành phần I – Kiến thức trước."
+    if (id === "van-dung") {
+      if (!sectionProgress.knowledge) return "Hoàn thành phần I – Kiến thức trước."
+      if (!sectionProgress.quiz) return "Hoàn thành phần II – Luyện tập trước."
+    }
+    return ""
   }
 
   const answeredCount = Object.keys(selectedAnswers).length
@@ -102,12 +128,23 @@ export default function App() {
     setProgressRecords(nextRecords)
     progressSaved.current = true
   }, [showResults, studentName, score, questionBank.length, progressRecords])
+  // Auto-mark quiz done once results show with passing score
+  useEffect(() => {
+    if (showResults && score >= 6 && !sectionProgress.quiz) {
+      setSectionProgress({ ...sectionProgress, quiz: true })
+    }
+  }, [showResults, score, sectionProgress, setSectionProgress])
+  const markKnowledgeDone = () => {
+    if (sectionProgress.knowledge) return
+    setSectionProgress({ ...sectionProgress, knowledge: true })
+  }
   const hasEssayContent = essayAnswer.trim().length > 0
   const passesQuiz = hasCompletedQuiz && score >= 6
   const canCompleteCourse = passesQuiz && hasEssayContent
 
   const finalizeCourse = () => {
     if (!canCompleteCourse) return
+    setSectionProgress({ ...sectionProgress, application: true })
     setCourseCompleted(true)
   }
 
@@ -192,20 +229,25 @@ export default function App() {
             </span>
           </button>
           <nav className="desktop-nav" aria-label="Điều hướng bài học">
-            {sections.map((section, index) => (
-              <button
-                key={section.id}
-                onClick={() => goToSection(section.id)}
-                className={
-                  activeLessonTab === section.id
-                    ? "nav-item active"
-                    : "nav-item"
-                }
-              >
-                <span>{["I", "II", "III"][index]}</span>
-                {section.label}
-              </button>
-            ))}
+            {sections.map((section, index) => {
+              const locked = isSectionLocked(section.id)
+              return (
+                <button
+                  key={section.id}
+                  onClick={() => goToSection(section.id)}
+                  aria-disabled={locked}
+                  className={
+                    (activeLessonTab === section.id
+                      ? "nav-item active"
+                      : "nav-item") + (locked ? " nav-item-locked" : "")
+                  }
+                >
+                  <span>{["I", "II", "III"][index]}</span>
+                  {section.label}
+                  {locked && <Icon name="close" size={14} />}
+                </button>
+              )
+            })}
           </nav>
           <div className="topbar-user-area">
             {studentName && (
@@ -231,6 +273,11 @@ export default function App() {
           </div>
         </div>
       </header>
+      {lockNotice && (
+        <div className="container">
+          <div className="lock-notice-bar">{lockNotice}</div>
+        </div>
+      )}
 
       <main>
         {activeLessonTab === "kien-thuc" && knowledgeTab === null && (
@@ -315,6 +362,8 @@ export default function App() {
             onChange={setKnowledgeTab}
             videoQuestions={videoQuestions}
             videoSource={videoSource}
+            knowledgeDone={sectionProgress.knowledge}
+            onCompleteKnowledge={markKnowledgeDone}
           />
         )}
 
@@ -625,8 +674,8 @@ export default function App() {
                     onClick={finalizeCourse}
                   >
                     {canCompleteCourse
-                      ? "Kết thúc khoá học"
-                      : "Hoàn thành đủ điều kiện để kết thúc khoá học"}
+                      ? "Kết thúc bài học"
+                      : "Hoàn thành đủ điều kiện để kết thúc bài học"}
                   </button>
                 </div>
               </div>
@@ -698,16 +747,23 @@ export default function App() {
       </footer>
 
       <nav className="mobile-nav" aria-label="Điều hướng di động">
-        {sections.map((section) => (
-          <button
-            key={section.id}
-            onClick={() => goToSection(section.id)}
-            className={activeLessonTab === section.id ? "active" : ""}
-          >
-            <Icon name={section.icon} size={20} />
-            <span>{section.label}</span>
-          </button>
-        ))}
+        {sections.map((section) => {
+          const locked = isSectionLocked(section.id)
+          return (
+            <button
+              key={section.id}
+              onClick={() => goToSection(section.id)}
+              aria-disabled={locked}
+              className={
+                (activeLessonTab === section.id ? "active" : "") +
+                (locked ? " mobile-nav-locked" : "")
+              }
+            >
+              <Icon name={locked ? "close" : section.icon} size={20} />
+              <span>{section.label}</span>
+            </button>
+          )
+        })}
       </nav>
 
       {role === null && (
