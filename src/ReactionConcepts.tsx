@@ -91,11 +91,11 @@ export function IrreversibleReaction() {
               <b>→</b> sản phẩm.
             </li>
             <li>
-              Khi phản ứng xảy ra xong, chỉ còn sản phẩm, không có xu hướng tạo
+              Khi phản ứng kết thúc, chỉ còn sản phẩm, không có xu hướng tạo
               lại chất ban đầu.
             </li>
             <li>
-              Trong PTHH, mũi tên biểu diễn:
+              Trong phương trình hóa học (PTHH), mũi tên biểu diễn:
             </li>
           </ul>
           <div className="conclusion-equation">A + B → C + D</div>
@@ -205,7 +205,7 @@ export function ReversibleReaction() {
             trong cùng điều kiện.
           </p>
           <p className="reversible-explanation">
-            Phương trình hoá học của phản ứng thuận nghịch được biểu diễn bằng
+            Phương trình hóa học của phản ứng thuận nghịch được biểu diễn bằng
             hai nửa mũi tên ngược chiều nhau. Chiều từ trái sang phải là chiều
             phản ứng thuận, chiều từ phải sang trái là chiều phản ứng nghịch.
           </p>

@@ -472,7 +472,7 @@ export default function App() {
                   <span>PHẦN III • VẬN DỤNG</span>
                   <h2>Đưa kiến thức vào thực tế</h2>
                   <p>
-                    Vận dụng nguyên lí chuyển dịch cân bằng để phân tích một vấn
+                    Vận dụng nguyên lý chuyển dịch cân bằng để phân tích một vấn
                     đề gần gũi trong đời sống.
                   </p>
                 </div>
@@ -497,7 +497,7 @@ export default function App() {
                     <span>THỬ THÁCH THỰC TẾ</span>
                     <h3>Kỹ sư xử lý hồ nước sinh thái</h3>
                   </div>
-                  <small>Vận dụng nguyên lí Le Chatelier</small>
+                  <small>Vận dụng nguyên lý Le Chatelier</small>
                 </div>
                 <article className="scenario-card">
                   <div className="scenario-brief">
@@ -517,7 +517,7 @@ export default function App() {
                     <span>NHIỆM VỤ THỰC TẾ</span>
                     <h3>Đề xuất phương án giảm mùi H₂S</h3>
                     <p>
-                      Dựa vào nguyên lí Le Chatelier, hãy lựa chọn biện pháp tác
+                      Dựa vào nguyên lý Le Chatelier, hãy lựa chọn biện pháp tác
                       động đến pH hoặc loại bỏ một cấu tử để cân bằng chuyển
                       dịch theo chiều làm giảm H₂S.
                     </p>

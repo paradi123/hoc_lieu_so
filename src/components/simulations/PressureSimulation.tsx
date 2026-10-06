@@ -25,8 +25,8 @@ export default function PressureSimulation() {
       setNo2Ratio(mode === "compress" ? 0.35 : 0.6)
       setStatus(
         mode === "compress"
-          ? "Cân bằng dịch chuyển chiều thuận: NO₂ → N₂O₄, số mol khí giảm nên màu nhạt dần."
-          : "Cân bằng dịch chuyển chiều nghịch: N₂O₄ → NO₂, số mol khí tăng nên màu đậm lên.",
+          ? "Cân bằng chuyển dịch theo chiều thuận: NO₂ → N₂O₄, số mol khí giảm nên màu nhạt dần."
+          : "Cân bằng chuyển dịch theo chiều nghịch: N₂O₄ → NO₂, số mol khí tăng nên màu đậm lên.",
       )
       setAnimating(false)
     }, 800)

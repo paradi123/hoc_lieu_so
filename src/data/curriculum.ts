@@ -18,7 +18,7 @@ export const sections: MainSection[] = [
     children: [
       {
         id: "phan-ung-thuan-nghich",
-        label: "Phản ứng một chiều và thuận nghịch",
+        label: "Phản ứng một chiều và phản ứng thuận nghịch",
         icon: "arrow",
       },
       {

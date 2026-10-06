@@ -155,7 +155,7 @@ export default function KnowledgeTabs({
                     ngược nhau trong cùng điều kiện.
                   </p>
                   <p>
-                    Phương trình hoá học của phản ứng thuận nghịch được biểu
+                    Phương trình hóa học của phản ứng thuận nghịch được biểu
                     diễn bằng hai nửa mũi tên ngược chiều nhau. Chiều từ trái
                     sang phải là chiều phản ứng thuận, chiều từ phải sang trái
                     là chiều phản ứng nghịch.

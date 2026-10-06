@@ -57,14 +57,14 @@ function PressureExercise({
   const blanks = [
     {
       id: "left-moles",
-      before: "Tổng số hệ số chất khí ở vế trái (chất tham gia):",
+      before: "Tổng số mol chất khí ở vế trái (chất tham gia):",
       after: "(Vì hệ số NO₂ trong phương trình là 2).",
       options: ["1 mol", "2 mol", "3 mol"],
       answer: "2 mol",
     },
     {
       id: "right-moles",
-      before: "Tổng số hệ số chất khí ở vế phải (chất sản phẩm):",
+      before: "Tổng số mol chất khí ở vế phải (chất sản phẩm):",
       after: "(Vì hệ số N₂O₄ trong phương trình là 1).",
       options: ["1 mol", "2 mol", "4 mol"],
       answer: "1 mol",
@@ -172,7 +172,7 @@ function PressureObservationExercise({
     {
       id: "not-shifted",
       before: "Hiện tượng tức thời này chưa phải do",
-      after: "dịch chuyển.",
+      after: "chuyển dịch.",
       options: ["cân bằng", "áp suất"],
       answer: "cân bằng",
     },
@@ -181,8 +181,8 @@ function PressureObservationExercise({
       before:
         "Sau khi giữ yên pít-tông, màu nâu đỏ nhạt dần chứng tỏ lượng khí NO₂ đã",
       after: ".",
-      options: ["bớt đi", "tăng lên"],
-      answer: "bớt đi",
+      options: ["giảm đi", "tăng lên"],
+      answer: "giảm đi",
     },
     {
       id: "n2o4-increases",
@@ -193,7 +193,7 @@ function PressureObservationExercise({
     },
     {
       id: "shift-forward",
-      before: "Điều này chứng minh cân bằng đã dịch chuyển theo",
+      before: "Điều này chứng minh cân bằng đã chuyển dịch theo",
       after: ".",
       options: ["chiều thuận", "chiều nghịch"],
       answer: "chiều thuận",
@@ -291,7 +291,7 @@ export default function PressureExercises() {
           <h3>Kết luận</h3>
           <p>
             Khi đẩy pít-tông xuống (làm tăng áp suất chung của hệ), hệ cân bằng
-            đã tự dịch chuyển theo chiều thuận. Chiều này trùng với chiều làm
+            đã tự chuyển dịch theo chiều thuận. Chiều này trùng với chiều làm
             <select
               className={`analysis-select${
                 checked
@@ -336,8 +336,8 @@ export default function PressureExercises() {
             <h3>Kết luận đúng</h3>
             <p>
               Khi đẩy pít-tông xuống, làm tăng áp suất chung của hệ, hệ cân bằng
-              tự dịch chuyển theo chiều thuận. Chiều này trùng với chiều làm
-              <strong> giảm số mol khí</strong> trong bình.
+              tự chuyển dịch theo chiều thuận. Chiều này trùng với chiều làm
+              <strong>giảm số mol khí</strong> trong bình.
             </p>
             <p>(Tương tự với trường hợp kéo pít-tông lên.)</p>
             <p>
