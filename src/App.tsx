@@ -261,7 +261,11 @@ function App() {
         <div className="container topbar-inner">
           <button
             className="brand"
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            onClick={() => {
+              goToSection("kien-thuc")
+              setKnowledgeTab(null)
+              window.scrollTo({ top: 0, behavior: "smooth" })
+            }}
           >
             <span className="brand-mark">
               <Icon name="atom" size={25} />
@@ -283,65 +287,104 @@ function App() {
               </button>
             ))}
           </nav>
-          <div className="class-badge">LỚP 11</div>
+          <div className="topbar-user-area">
+            {studentName && (
+              <button
+                className="student-badge"
+                onClick={() => setHasStarted(false)}
+                title="Bấm để đổi tên học sinh"
+              >
+                <span className="student-badge-avatar">🎓</span>
+                <span className="student-badge-name">{studentName}</span>
+                <span className="student-badge-edit">✏️</span>
+              </button>
+            )}
+            <div className="class-badge">LỚP 11</div>
+            {appConfig.teacherAccessEnabled && (
+              <button
+                className="teacher-login-trigger"
+                onClick={() => setShowTeacherLogin(true)}
+              >
+                Giáo viên
+              </button>
+            )}
+          </div>
         </div>
       </header>
 
       <main>
-        {false && <section className="hero">
-          <div className="orb orb-one" />
-          <div className="orb orb-two" />
-          <div className="container hero-grid">
-            <div className="hero-copy">
-              <div className="eyebrow">
-                <span>BÀI 1</span>
-                <i />
-                CHƯƠNG TRÌNH HÓA HỌC 11
+        {activeLessonTab === "kien-thuc" && knowledgeTab === null && (
+          <section className="hero">
+            <div className="orb orb-one" />
+            <div className="orb orb-two" />
+            <div className="container hero-grid">
+              <div className="hero-copy">
+                <div className="eyebrow">
+                  <span>BÀI 1</span>
+                  <i />
+                  CHƯƠNG TRÌNH HÓA HỌC 11
+                </div>
+                <h1>
+                  Khái niệm về
+                  <em>cân bằng hóa học</em>
+                </h1>
+                <p>
+                  Cùng khám phá thế giới vi mô, nơi các phản ứng không hề dừng lại
+                  — chúng chỉ tìm thấy một nhịp điệu cân bằng.
+                </p>
+                <div className="hero-actions">
+                  <button
+                    className="hero-primary-btn"
+                    onClick={() => setKnowledgeTab(0)}
+                  >
+                    <Icon name="book" size={18} />
+                    Bắt đầu học chủ đề I
+                  </button>
+                  <button
+                    className="hero-secondary-btn"
+                    onClick={() => goToSection("luyen-tap")}
+                  >
+                    <Icon name="quiz" size={18} />
+                    Luyện tập trắc nghiệm
+                  </button>
+                </div>
               </div>
-              <h1>
-                Khái niệm về
-                <em>cân bằng hóa học</em>
-              </h1>
-              <p>
-                Cùng khám phá thế giới vi mô, nơi các phản ứng không hề dừng lại
-                — chúng chỉ tìm thấy một nhịp điệu cân bằng.
-              </p>
-            </div>
 
-            <div className="hero-visual" aria-label="Minh họa cân bằng hóa học">
-              <div className="visual-card">
-                <div className="molecule molecule-left">
-                  <span className="atom atom-blue" />
-                  <span className="bond" />
-                  <span className="atom atom-blue" />
-                  <small>Chất phản ứng</small>
+              <div className="hero-visual" aria-label="Minh họa cân bằng hóa học">
+                <div className="visual-card">
+                  <div className="molecule molecule-left">
+                    <span className="atom atom-blue" />
+                    <span className="bond" />
+                    <span className="atom atom-blue" />
+                    <small>Chất phản ứng</small>
+                  </div>
+                  <div className="equilibrium-symbol">
+                    <span>⇌</span>
+                    <small>CÂN BẰNG ĐỘNG</small>
+                  </div>
+                  <div className="molecule molecule-right">
+                    <span className="atom atom-orange" />
+                    <span className="bond" />
+                    <span className="atom atom-teal" />
+                    <small>Sản phẩm</small>
+                  </div>
+                  <div className="visual-note">
+                    <Icon name="spark" />
+                    <span>Tốc độ thuận</span>
+                    <b>=</b>
+                    <span>Tốc độ nghịch</span>
+                  </div>
                 </div>
-                <div className="equilibrium-symbol">
-                  <span>⇌</span>
-                  <small>CÂN BẰNG ĐỘNG</small>
+                <div className="floating-label label-one">
+                  v<sub>t</sub>
                 </div>
-                <div className="molecule molecule-right">
-                  <span className="atom atom-orange" />
-                  <span className="bond" />
-                  <span className="atom atom-teal" />
-                  <small>Sản phẩm</small>
+                <div className="floating-label label-two">
+                  v<sub>n</sub>
                 </div>
-                <div className="visual-note">
-                  <Icon name="spark" />
-                  <span>Tốc độ thuận</span>
-                  <b>=</b>
-                  <span>Tốc độ nghịch</span>
-                </div>
-              </div>
-              <div className="floating-label label-one">
-                v<sub>t</sub>
-              </div>
-              <div className="floating-label label-two">
-                v<sub>n</sub>
               </div>
             </div>
-          </div>
-        </section>}
+          </section>
+        )}
 
         {activeLessonTab === "kien-thuc" && (
           <KnowledgeTabs
@@ -583,6 +626,19 @@ function App() {
         </div>
       </footer>
 
+      <nav className="mobile-nav" aria-label="Điều hướng di động">
+        {sections.map((section) => (
+          <button
+            key={section.id}
+            onClick={() => goToSection(section.id)}
+            className={activeLessonTab === section.id ? "active" : ""}
+          >
+            <Icon name={section.icon} size={20} />
+            <span>{section.label}</span>
+          </button>
+        ))}
+      </nav>
+
       {role === null && (
         <div className="monitor-overlay student-entry-overlay">
           <div className="monitor-dialog role-dialog">
@@ -795,6 +851,28 @@ function KnowledgeTabs({
 
   return (
     <section id="kien-thuc" className="content-section knowledge-section">
+      {activeTab !== null && (
+        <nav className="knowledge-subbar" aria-label="Chuyển đổi bài học">
+          <div className="container knowledge-subbar-inner">
+            <button onClick={() => onChange(null)}>
+              ← Tổng quan kiến thức
+            </button>
+            {(sections[0].children ?? []).map((section, index) => (
+              <button
+                key={section.id}
+                className={activeTab === index ? "active" : ""}
+                onClick={() => {
+                  onChange(index as 0 | 1)
+                  window.scrollTo({ top: 0, behavior: "smooth" })
+                }}
+              >
+                <span>{["I", "II"][index]}.</span>
+                {section.label}
+              </button>
+            ))}
+          </div>
+        </nav>
+      )}
       <div className="container">
         {activeTab === null ? (
           <>
@@ -1485,6 +1563,97 @@ function PressureSimulation() {
 }
 
 function ConcentrationSimulation() {
+  const [saltAdded, setSaltAdded] = useState(false)
+  const [acidAdded, setAcidAdded] = useState(false)
+
+  const playTone = (type: "salt" | "acid" | "reset") => {
+    const AudioContextClass = window.AudioContext || (window as typeof window & {
+      webkitAudioContext?: typeof AudioContext
+    }).webkitAudioContext
+    if (!AudioContextClass) return
+    const context = new AudioContextClass()
+    const notes = type === "salt" ? [880, 1320] : type === "acid" ? [470, 390] : [760, 560, 390]
+    notes.forEach((frequency, index) => {
+      const oscillator = context.createOscillator()
+      const gain = context.createGain()
+      const start = context.currentTime + index * 0.12
+      oscillator.type = "sine"
+      oscillator.frequency.setValueAtTime(frequency, start)
+      gain.gain.setValueAtTime(0.0001, start)
+      gain.gain.exponentialRampToValueAtTime(0.05, start + 0.015)
+      gain.gain.exponentialRampToValueAtTime(0.0001, start + 0.18)
+      oscillator.connect(gain).connect(context.destination)
+      oscillator.start(start)
+      oscillator.stop(start + 0.2)
+    })
+    window.setTimeout(() => void context.close(), 700)
+  }
+
+  return (
+    <div className="canva-concentration-simulation">
+      <header className="canva-concentration-header">
+        <div>
+          <span>THÍ NGHIỆM 02 • ẢNH HƯỞNG CỦA NỒNG ĐỘ</span>
+          <h3>Phòng thí nghiệm cân bằng</h3>
+          <p>Khám phá ảnh hưởng của nồng độ</p>
+        </div>
+        <strong>CH₃COONa + H₂O ⇌ CH₃COOH + NaOH</strong>
+      </header>
+      <div className="canva-concentration-board">
+        <div className="canva-instruction-chip">Hãy quan sát màu dung dịch và thực hiện từng thao tác!</div>
+        <div className="canva-tube-stage" aria-label="Ba ống nghiệm trong phòng thí nghiệm">
+          <CanvaTube label="Đối chứng" number="1" />
+          <CanvaTube label="Tăng nồng độ muối" number="2" state={saltAdded ? "salt" : "idle"} />
+          <CanvaTube label="Thêm axit" number="3" state={acidAdded ? "acid" : "idle"} />
+        </div>
+        <div className="canva-bench" aria-hidden="true" />
+      </div>
+      <div className="canva-concentration-actions">
+        <button className="canva-salt-button" disabled={saltAdded} onClick={() => { setSaltAdded(true); playTone("salt") }}>
+          Thêm tinh thể CH₃COONa (Ống 2)
+        </button>
+        <button className="canva-acid-button" disabled={acidAdded} onClick={() => { setAcidAdded(true); playTone("acid") }}>
+          Thêm dung dịch CH₃COOH (Ống 3)
+        </button>
+        <button className="canva-reset-button" onClick={() => { setSaltAdded(false); setAcidAdded(false); playTone("reset") }}>
+          Làm lại
+        </button>
+      </div>
+      <aside className="canva-explanation" aria-live="polite">
+        <span aria-hidden="true">💡</span>
+        {!saltAdded && !acidAdded && <p>Chọn một thao tác để xem cân bằng hóa học chuyển dịch như thế nào.</p>}
+        {saltAdded && <p className="salt-message">Cân bằng chuyển dịch theo chiều thuận (tạo ra nhiều NaOH hơn) làm phenolphthalein hóa hồng đậm.</p>}
+        {acidAdded && <p className="acid-message">Cân bằng chuyển dịch theo chiều nghịch (tiêu hao NaOH) làm dung dịch mất màu.</p>}
+      </aside>
+      <p className="canva-concentration-footer">Mẹo: Phenolphthalein có màu hồng trong môi trường bazơ và không màu khi độ bazơ giảm.</p>
+    </div>
+  )
+}
+
+function CanvaTube({
+  label,
+  number,
+  state = "idle",
+}: {
+  label: string
+  number: string
+  state?: "idle" | "salt" | "acid"
+}) {
+  return (
+    <article className={`canva-tube-station canva-${state}`}>
+      <span className="canva-tube-label">{label}</span>
+      <div className="canva-tube" aria-label={`Ống nghiệm số ${number}`}>
+        <div className="canva-tube-rim" />
+        {state === "salt" && <div className="canva-crystals"><i>✦</i><i>✦</i><i>✦</i></div>}
+        {state === "acid" && <div className="canva-drops"><i /><i /><i /></div>}
+        <div className="canva-liquid" />
+      </div>
+      <span className="canva-tube-number">{number}</span>
+    </article>
+  )
+}
+
+function ConcentrationSimulationLegacy() {
   const [prepared, setPrepared] = useState(false)
   const [saltAdded, setSaltAdded] = useState(false)
   const [acidAdded, setAcidAdded] = useState(false)
