@@ -204,7 +204,7 @@ export default function KnowledgeTabs({
                 <button
                   type="button"
                   className="knowledge-finish-button"
-                  onClick={onCompleteKnowledge}
+                  onClick={onAllKnowledgeDone}
                 >
                   Hoàn thành phần Kiến thức & mở khoá Luyện tập
                 </button>
