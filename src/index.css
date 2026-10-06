@@ -3494,6 +3494,168 @@ input, select, textarea { font: inherit; }
   background: #f1f5f9;
   color: #475569;
 }
+/* Course finalize controls inside PHẦN III */
+.course-finalize {
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 24px;
+  align-items: stretch;
+  background: white;
+  border: 3px solid #0f2744;
+  border-radius: var(--radius-xl);
+  padding: 24px 28px;
+  box-shadow: var(--shadow-md);
+}
+.course-finish-status strong {
+  display: block;
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #0f2744;
+  margin-bottom: 12px;
+}
+.course-finish-status ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 700;
+}
+.course-finish-status li.pass {
+  color: #047857;
+}
+.course-finish-status li.fail {
+  color: #475569;
+}
+.course-finish-button {
+  align-self: center;
+  border: 0;
+  background: #0f2744;
+  color: white;
+  padding: 16px 28px;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  cursor: pointer;
+  min-width: 240px;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+.course-finish-button:hover:not(:disabled) {
+  background: #14b8a6;
+  transform: translateY(-2px);
+}
+.course-finish-button:disabled {
+  background: #cbd5e1;
+  color: #475569;
+  cursor: not-allowed;
+}
+
+/* Completion dialog */
+.completion-dialog {
+  width: min(100%, 640px);
+  text-align: left;
+  padding: 36px;
+}
+.completion-dialog > span {
+  color: var(--teal);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+}
+.completion-dialog > h2 {
+  margin: 6px 0 18px;
+  font-size: 24px;
+  font-weight: 900;
+  color: var(--navy);
+}
+.completion-summary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 18px;
+}
+.completion-stat {
+  background: #f0fdfa;
+  border: 1px solid #ccfbf1;
+  border-radius: 12px;
+  padding: 14px;
+  text-align: center;
+}
+.completion-stat strong {
+  display: block;
+  font-size: 22px;
+  font-weight: 900;
+  color: #0f2744;
+}
+.completion-stat small {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #115e59;
+}
+.completion-grade {
+  display: grid;
+  place-items: center;
+  width: 88px;
+  height: 88px;
+  margin: 8px auto 12px;
+  background: linear-gradient(135deg, #0f2744, #14b8a6);
+  color: white;
+  font-size: 40px;
+  font-weight: 900;
+  border-radius: 50%;
+  box-shadow: 0 12px 24px rgba(15, 39, 68, 0.25);
+}
+.completion-message {
+  text-align: center;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #334155;
+  margin: 0 0 16px;
+}
+.completion-essay {
+  background: #f8fafc;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 16px 18px;
+  margin-bottom: 20px;
+}
+.completion-essay strong {
+  display: block;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 8px;
+}
+.completion-essay blockquote {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.7;
+  color: #0f172a;
+  white-space: pre-wrap;
+  max-height: 180px;
+  overflow-y: auto;
+}
+.completion-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+@media (max-width: 768px) {
+  .course-finalize { grid-template-columns: 1fr; }
+  .course-finish-button { min-width: 0; width: 100%; }
+  .completion-summary { grid-template-columns: 1fr; }
+  .completion-dialog { padding: 28px 22px; }
+}
 
 /* ==================== TEACHER DASHBOARD ==================== */
 .teacher-shell {

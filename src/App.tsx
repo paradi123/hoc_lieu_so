@@ -45,6 +45,7 @@ export default function App() {
   const [teacherLoginError, setTeacherLoginError] = useState("")
   const [hasStarted, setHasStarted] = useState(false)
   const [showResults, setShowResults] = useState(false)
+  const [courseCompleted, setCourseCompleted] = useState(false)
   const [knowledgeTab, setKnowledgeTab] = useState<0 | 1 | null>(null)
   const [activeLessonTab, setActiveLessonTab] = useState("kien-thuc")
   const [essayAnswer, setEssayAnswer] = useLocalStorage<string>(
@@ -101,6 +102,22 @@ export default function App() {
     setProgressRecords(nextRecords)
     progressSaved.current = true
   }, [showResults, studentName, score, questionBank.length, progressRecords])
+  const hasEssayContent = essayAnswer.trim().length > 0
+  const passesQuiz = hasCompletedQuiz && score >= 6
+  const canCompleteCourse = passesQuiz && hasEssayContent
+
+  const finalizeCourse = () => {
+    if (!canCompleteCourse) return
+    setCourseCompleted(true)
+  }
+
+  const restartCourse = () => {
+    setSelectedAnswers({})
+    setShowResults(false)
+    setCourseCompleted(false)
+    setActiveLessonTab("kien-thuc")
+    window.scrollTo({ top: 0, behavior: "smooth" })
+  }
 
   const startLesson = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -586,11 +603,87 @@ export default function App() {
                     </div>
                   </div>
                 </article>
+                <div className="course-finalize">
+                  <div className="course-finish-status">
+                    <strong>Điều kiện hoàn thành khoá học</strong>
+                    <ul>
+                      <li className={hasCompletedQuiz ? "pass" : "fail"}>
+                        {hasCompletedQuiz ? "✓" : "○"} Làm đủ 12 câu trắc nghiệm
+                      </li>
+                      <li className={score >= 6 ? "pass" : "fail"}>
+                        {score >= 6 ? "✓" : "○"} Đạt tối thiểu 6/12 câu đúng
+                      </li>
+                      <li className={hasEssayContent ? "pass" : "fail"}>
+                        {hasEssayContent ? "✓" : "○"} Hoàn thành bài tự luận
+                      </li>
+                    </ul>
+                  </div>
+                  <button
+                    type="button"
+                    className="course-finish-button"
+                    disabled={!canCompleteCourse}
+                    onClick={finalizeCourse}
+                  >
+                    {canCompleteCourse
+                      ? "Kết thúc khoá học"
+                      : "Hoàn thành đủ điều kiện để kết thúc khoá học"}
+                  </button>
+                </div>
               </div>
             </div>
           </section>
         )}
       </main>
+      {courseCompleted && (
+        <div className="monitor-overlay completion-overlay" role="dialog" aria-modal="true">
+          <div className="monitor-dialog completion-dialog">
+            <div className="monitor-icon completion-icon">
+              <Icon name="spark" size={28} />
+            </div>
+            <span>CHÚC MỪNG HOÀN THÀNH KHOÁ HỌC</span>
+            <h2>Đánh giá cá nhân của {studentName}</h2>
+
+            <div className="completion-summary">
+              <div className="completion-stat">
+                <strong>{score}/{questionBank.length}</strong>
+                <small>Trắc nghiệm</small>
+              </div>
+              <div className="completion-stat">
+                <strong>{essayAnswer.trim().length}</strong>
+                <small>Ký tự tự luận</small>
+              </div>
+              <div className="completion-stat">
+                <strong>{resultLabel}</strong>
+                <small>Xếp loại</small>
+              </div>
+            </div>
+
+            <div className="completion-grade">
+              {score >= Math.ceil(questionBank.length * 0.9)
+                ? "A"
+                : score >= Math.ceil(questionBank.length * 0.7)
+                  ? "B"
+                  : score >= 6
+                    ? "C"
+                    : "D"}
+            </div>
+
+            <p className="completion-message">{resultMessage}</p>
+
+            <div className="completion-essay">
+              <strong>Bài tự luận của bạn</strong>
+              <blockquote>{essayAnswer.trim()}</blockquote>
+            </div>
+
+            <div className="completion-actions">
+              <button className="result-secondary-button" onClick={restartCourse}>
+                Học lại từ đầu
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
 
       <footer>
         <div className="container footer-inner">
