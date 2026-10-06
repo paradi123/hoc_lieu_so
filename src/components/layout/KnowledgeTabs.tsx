@@ -72,7 +72,7 @@ export default function KnowledgeTabs({
                   <span>Video & mô phỏng</span>
                 </div>
                 <div>
-                  <strong>11</strong>
+                  <strong>12</strong>
                   <span>Câu hỏi</span>
                 </div>
               </div>
