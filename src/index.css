@@ -3987,17 +3987,18 @@ footer {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 14px;
+  gap: 16px;
   min-width: 0;
 }
 .footer-school-logo {
-  width: 64px;
-  height: 64px;
+  width: 72px;
+  height: 72px;
   object-fit: contain;
   flex: 0 0 auto;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.04);
-  padding: 4px;
+  border-radius: 10px;
+  background: #ffffff;
+  padding: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
 }
 .footer-school-text {
   display: flex;
@@ -4018,7 +4019,6 @@ footer {
   text-transform: uppercase;
   color: #14b8a6;
 }
-
 footer p {
   margin: 0;
   font-size: 13px;
@@ -4041,7 +4041,7 @@ footer p {
   .footer-inner {
     grid-template-columns: 1fr;
   }
-  .footer-school-logo { width: 56px; height: 56px; }
+  .footer-school-logo { width: 60px; height: 60px; }
 }
 
 .mobile-nav { display: none; }

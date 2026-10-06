@@ -761,15 +761,16 @@ export default function App() {
           </div>
           <span className="footer-divider" aria-hidden="true" />
           <div className="footer-school">
+            <img
+              src="/school-logo.webp"
+              alt="Logo trường Đại học Giáo dục - Đại học Quốc gia Hà Nội"
+              className="footer-school-logo"
+              loading="lazy"
+            />
             <div className="footer-school-text">
               <strong>Trường Đại học Giáo dục - Đại học Quốc gia Hà Nội</strong>
               <small>Đơn vị triển khai</small>
             </div>
-            <img
-              src="/school-logo.webp"
-              alt="Logo trường"
-              className="footer-school-logo"
-            />
           </div>
         </div>
       </footer>
