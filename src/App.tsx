@@ -774,7 +774,7 @@ export default function App() {
           <span className="footer-divider" aria-hidden="true" />
           <div className="footer-school">
             <img
-              src="/logo_ued.png"
+              src={`${import.meta.env.BASE_URL}logo_ued.png`}
               alt="Logo trường Đại học Giáo dục - Đại học Quốc gia Hà Nội"
               className="footer-school-logo"
               loading="lazy"
