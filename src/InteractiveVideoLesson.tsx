@@ -11,7 +11,7 @@ export type ChoiceQuestion = {
   question: string
   image?: string
   imageAlt?: string
-  choices: Array<{ key: string; text: string }>
+  choices: Array<{ key: string; text: string }>,
   correctAnswer: string
   explanation: string
 }
@@ -57,7 +57,7 @@ export const initialVideoQuestions: VideoQuestion[] = [
   },
   {
     id: "ong-nghiem-nuoc-da",
-    time: 98,
+    time: 94,
     type: "fill",
     question:
       "Khi ngâm ống nghiệm vào nước đá, hãy hoàn thành ba nhận xét:",
@@ -87,7 +87,7 @@ export const initialVideoQuestions: VideoQuestion[] = [
   },
   {
     id: "ong-nghiem-nuoc-nong",
-    time: 102,
+    time: 98,
     type: "fill",
     question:
       "Khi ngâm ống nghiệm vào nước nóng, hãy hoàn thành ba nhận xét:",

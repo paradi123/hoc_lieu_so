@@ -30,11 +30,12 @@ export default function KnowledgeTabs({
   onAllKnowledgeDone,
 }: KnowledgeTabsProps) {
   const [concentrationDone, setConcentrationDone] = useState(false)
+  const [videoDone, setVideoDone] = useState(false)
   const [pressureDone, setPressureDone] = useState(false)
 
   useEffect(() => {
-    if (concentrationDone && pressureDone) onAllKnowledgeDone()
-  }, [concentrationDone, pressureDone, onAllKnowledgeDone])
+    if (videoDone || (concentrationDone && pressureDone)) onAllKnowledgeDone()
+  }, [concentrationDone, pressureDone, videoDone, onAllKnowledgeDone])
   return (
     <section id="kien-thuc" className="content-section knowledge-section">
       {activeTab !== null && (
@@ -152,6 +153,7 @@ export default function KnowledgeTabs({
             <InteractiveVideoLesson
               videoQuestions={videoQuestions}
               videoSource={videoSource}
+              onComplete={() => setVideoDone(true)}
               completionContent={
                 <section
                   className="reaction-conclusion reversible-theory"
