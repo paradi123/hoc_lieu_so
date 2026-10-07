@@ -1087,6 +1087,20 @@ input, select, textarea { font: inherit; }
   color: var(--navy);
   line-height: 1.45;
 }
+.video-question-figure {
+  margin: 0 0 16px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+  background: #f8fafc;
+}
+.video-question-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 320px;
+  object-fit: contain;
+}
 
 .video-choice-list {
   display: grid;
@@ -2098,22 +2112,30 @@ input, select, textarea { font: inherit; }
   transition: background 0.4s ease;
 }
 
+@keyframes particle-chaos {
+  0%   { transform: translate(0, 0); }
+  20%  { transform: translate(var(--dx1, 6px), var(--dy1, -4px)); }
+  40%  { transform: translate(var(--dx2, -4px), var(--dy2, 6px)); }
+  60%  { transform: translate(var(--dx3, 4px), var(--dy3, 4px)); }
+  80%  { transform: translate(var(--dx4, -5px), var(--dy4, 5px)); }
+  100% { transform: translate(0, 0); }
+}
+
 .gas-particles {
   position: absolute;
   inset: 0;
-  display: flex;
-  flex-wrap: wrap;
-  align-content: space-around;
-  justify-content: space-around;
-  padding: 20px;
 }
 
 .gas-particle {
+  position: absolute;
   width: 10px;
   height: 10px;
   border-radius: 50%;
   display: inline-block;
-  animation: particle-float 3s infinite alternate ease-in-out;
+  animation-name: particle-chaos;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  will-change: transform;
 }
 .no2-particle {
   background: #b45309;
@@ -2542,7 +2564,10 @@ input, select, textarea { font: inherit; }
   width: 9px;
   height: 9px;
   border-radius: 50%;
-  animation: particle-float 2.5s infinite alternate ease-in-out;
+  animation-name: particle-chaos;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  will-change: transform;
 }
 .pressure-particle.no2 { background: #d97706; }
 .pressure-particle.n2o4 { background: rgba(255, 255, 255, 0.7); }

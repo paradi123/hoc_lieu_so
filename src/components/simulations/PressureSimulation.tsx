@@ -1,5 +1,23 @@
-import { useState } from "react"
+import { useMemo, useState } from "react"
 
+type Particle = { x: number; y: number; dx: number; dy: number; dur: number; delay: number }
+
+function generatePressureParticles(count: number, pressure: number): Particle[] {
+  // higher pressure (smaller volume) → faster, slightly tighter oscillation
+  const speed = 0.6 + Math.min(pressure, 4) * 0.45
+  return Array.from({ length: count }, () => {
+    const angle = Math.random() * Math.PI * 2
+    const magnitude = (3 + Math.random() * 9) * speed
+    return {
+      x: 5 + Math.random() * 90,
+      y: 8 + Math.random() * 82,
+      dx: Math.cos(angle) * magnitude,
+      dy: Math.sin(angle) * magnitude,
+      dur: 1.2 + Math.random() * (2.4 / speed),
+      delay: -Math.random() * 3,
+    }
+  })
+}
 export default function PressureSimulation() {
   const [piston, setPiston] = useState(20)
   const [no2Ratio, setNo2Ratio] = useState(0.6)
@@ -10,7 +28,12 @@ export default function PressureSimulation() {
   )
   const volume = Math.max(0.3, 1 - (piston - 20) / 80)
   const pressure = 1 / volume
+  const pressureParticles = useMemo(
+    () => generatePressureParticles(30, pressure),
+    [piston, no2Ratio],
+  )
   const gasOpacity = Math.min(0.82, (no2Ratio / volume) * 0.5)
+
 
   const movePiston = (nextPiston: number, mode: "compress" | "expand") => {
     if (animating || nextPiston === piston) return
@@ -57,17 +80,26 @@ export default function PressureSimulation() {
               }}
             >
               {particlesVisible &&
-                Array.from({ length: 30 }, (_, index) => (
+                pressureParticles.map((p, index) => (
                   <i
                     className={`pressure-particle ${
                       index < Math.round(no2Ratio * 30) ? "no2" : "n2o4"
                     }`}
                     key={index}
                     style={{
-                      left: `${8 + ((index * 37) % 84)}%`,
-                      top: `${10 + ((index * 61) % 78)}%`,
-                      animationDelay: `${-(index % 7) * 0.22}s`,
-                    }}
+                      left: `${p.x}%`,
+                      top: `${p.y}%`,
+                      "--dx1": `${p.dx}px`,
+                      "--dy1": `${-p.dy}px`,
+                      "--dx2": `${-p.dy}px`,
+                      "--dy2": `${p.dx}px`,
+                      "--dx3": `${p.dx * 0.6}px`,
+                      "--dy3": `${p.dy * 0.6}px`,
+                      "--dx4": `${-p.dx * 0.8}px`,
+                      "--dy4": `${p.dy * 0.8}px`,
+                      animationDuration: `${p.dur}s`,
+                      animationDelay: `${p.delay}s`,
+                    } as React.CSSProperties}
                   />
                 ))}
             </div>

@@ -9,6 +9,8 @@ export type ChoiceQuestion = {
   time: number
   type: "choice"
   question: string
+  image?: string
+  imageAlt?: string
   choices: Array<{ key: string; text: string }>
   correctAnswer: string
   explanation: string
@@ -19,6 +21,8 @@ export type FillQuestion = {
   time: number
   type: "fill"
   question: string
+  image?: string
+  imageAlt?: string
   fields: Array<{
     key: string
     label: string
@@ -37,6 +41,9 @@ export const initialVideoQuestions: VideoQuestion[] = [
     type: "choice",
     question:
       "Khi kỹ thuật viên cho phenolphthalein vào dung dịch CH₃COONa, dung dịch có màu gì?",
+    image: `${import.meta.env.BASE_URL}images/phenolphthalein-ch3coona.png`,
+    imageAlt:
+      "Cốc thủy tinh chứa dung dịch CH₃COONa sau khi nhỏ phenolphthalein có màu hồng nhạt.",
     choices: [
       { key: "A", text: "Hồng nhạt" },
       { key: "B", text: "Hồng" },
@@ -53,6 +60,9 @@ export const initialVideoQuestions: VideoQuestion[] = [
     type: "fill",
     question:
       "Khi ngâm ống nghiệm vào nước đá, hãy hoàn thành ba nhận xét:",
+    image: `${import.meta.env.BASE_URL}images/video-shared-ongnghiem.png`,
+    imageAlt:
+      "Ba ống nghiệm chứa dung dịch CH₃COONa + phenolphthalein trên giá đỡ, ống bên trái có màu hồng đậm, hai ống còn lại nhạt hơn.",
     fields: [
       {
         key: "a",
@@ -79,6 +89,9 @@ export const initialVideoQuestions: VideoQuestion[] = [
     type: "fill",
     question:
       "Khi ngâm ống nghiệm vào nước nóng, hãy hoàn thành ba nhận xét:",
+    image: `${import.meta.env.BASE_URL}images/video-shared-ongnghiem.png`,
+    imageAlt:
+      "Ba ống nghiệm chứa dung dịch CH₃COONa + phenolphthalein trên giá đỡ, ống bên trái có màu hồng đậm, hai ống còn lại nhạt hơn.",
     fields: [
       {
         key: "a",
@@ -424,6 +437,16 @@ export default function InteractiveVideoLesson({
                 <b>TẠM DỪNG TẠI {formatTime(activeQuestion.time)}</b>
               </div>
               <h4 id="video-question-title">{activeQuestion.question}</h4>
+
+              {activeQuestion.image && (
+                <figure className="video-question-figure">
+                  <img
+                    src={activeQuestion.image}
+                    alt={activeQuestion.imageAlt ?? ""}
+                    loading="lazy"
+                  />
+                </figure>
+              )}
 
               {activeQuestion.type === "choice" ? (
                 <div className="video-choice-list">

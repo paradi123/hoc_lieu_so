@@ -1,5 +1,25 @@
-import { useEffect, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import type React from "react"
+
+type Particle = { x: number; y: number; dx: number; dy: number; dur: number; delay: number }
+
+function generateParticles(count: number, temperature: number): Particle[] {
+  // higher temperature → larger Brownian displacements and quicker motion
+  const speed = 0.4 + (temperature / 60) * 1.6
+  return Array.from({ length: count }, () => {
+    const angle = Math.random() * Math.PI * 2
+    const magnitude = (4 + Math.random() * 10) * speed
+    return {
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      dx: Math.cos(angle) * magnitude,
+      dy: Math.sin(angle) * magnitude,
+      dur: 1.4 + Math.random() * (2.6 / speed),
+      delay: -Math.random() * 3,
+    }
+  })
+}
+
 
 export default function NO2Simulation() {
   const [temperature, setTemperature] = useState(25)
@@ -17,7 +37,17 @@ export default function NO2Simulation() {
   }, [targetRatio])
 
   const no2Count = Math.round(no2Ratio * 18)
+
   const n2o4Count = Math.round((18 - no2Count) / 2)
+  const no2Particles = useMemo(
+    () => generateParticles(no2Count, temperature),
+    [no2Count, temperature],
+  )
+  const n2o4Particles = useMemo(
+    () => generateParticles(n2o4Count, temperature),
+    [n2o4Count, temperature],
+  )
+
   const direction =
     temperature >= 36
       ? "Nhiệt độ cao: cân bằng chuyển dịch sang trái, tạo thêm NO₂."
@@ -40,11 +70,45 @@ export default function NO2Simulation() {
           aria-label={`Bình khí ở ${temperature} độ C`}
         >
           <div className="gas-particles">
-            {Array.from({ length: no2Count }).map((_, index) => (
-              <i className="gas-particle no2-particle" key={`no2-${index}`} />
+            {no2Particles.map((p, index) => (
+              <i
+                className="gas-particle no2-particle"
+                key={`no2-${index}`}
+                style={{
+                  left: `${p.x}%`,
+                  top: `${p.y}%`,
+                  "--dx1": `${p.dx}px`,
+                  "--dy1": `${-p.dy}px`,
+                  "--dx2": `${-p.dy}px`,
+                  "--dy2": `${p.dx}px`,
+                  "--dx3": `${p.dx * 0.6}px`,
+                  "--dy3": `${p.dy * 0.6}px`,
+                  "--dx4": `${-p.dx * 0.8}px`,
+                  "--dy4": `${p.dy * 0.8}px`,
+                  animationDuration: `${p.dur}s`,
+                  animationDelay: `${p.delay}s`,
+                } as React.CSSProperties}
+              />
             ))}
-            {Array.from({ length: n2o4Count }).map((_, index) => (
-              <i className="gas-particle n2o4-particle" key={`n2o4-${index}`} />
+            {n2o4Particles.map((p, index) => (
+              <i
+                className="gas-particle n2o4-particle"
+                key={`n2o4-${index}`}
+                style={{
+                  left: `${p.x}%`,
+                  top: `${p.y}%`,
+                  "--dx1": `${p.dx}px`,
+                  "--dy1": `${-p.dy}px`,
+                  "--dx2": `${-p.dy}px`,
+                  "--dy2": `${p.dx}px`,
+                  "--dx3": `${p.dx * 0.6}px`,
+                  "--dy3": `${p.dy * 0.6}px`,
+                  "--dx4": `${-p.dx * 0.8}px`,
+                  "--dy4": `${p.dy * 0.8}px`,
+                  animationDuration: `${p.dur}s`,
+                  animationDelay: `${p.delay}s`,
+                } as React.CSSProperties}
+              />
             ))}
           </div>
           <span>Màu nâu đỏ tăng khi nồng độ NO₂ tăng</span>
