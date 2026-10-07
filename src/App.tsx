@@ -23,7 +23,7 @@ export default function App() {
   const [progressRecords, setProgressRecords] =
     useLocalStorage<ProgressRecord[]>("chemlab-progress", [])
   const [videoQuestions, setVideoQuestions] = useLocalStorage<VideoQuestion[]>(
-    "chemlab-video-questions",
+    "chemlab-video-questions-v2",
     initialVideoQuestions,
   )
   const [videoSource, setVideoSource] = useLocalStorage(

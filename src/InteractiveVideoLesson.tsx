@@ -28,6 +28,7 @@ export type FillQuestion = {
     label: string
     acceptedAnswers: string[]
   }>
+  hint?: string
   explanation: string
 }
 
@@ -66,20 +67,21 @@ export const initialVideoQuestions: VideoQuestion[] = [
     fields: [
       {
         key: "a",
-        label: "Màu hồng (a) …",
+        label: "Màu hồng thay đổi như thế nào ?",
         acceptedAnswers: ["nhạt dần", "nhạt", "nhạt đi", "nhạt dần đi"],
       },
       {
         key: "b",
-        label: "Cân bằng chuyển dịch theo chiều (b) …",
+        label: "Cân bằng dịch chuyển theo chiều thuận hay nghịch ?",
         acceptedAnswers: ["nghịch", "chiều nghịch"],
       },
       {
         key: "c",
-        label: "Đó là chiều (c) …",
+        label: "Đó là chiều toả hay thu nhiệt ?",
         acceptedAnswers: ["tỏa nhiệt", "toả nhiệt", "chiều tỏa nhiệt"],
       },
     ],
+    hint: "Chú ý biến thiên enthalpy (ΔH) của phản ứng.",
     explanation:
       "Khi làm lạnh, cân bằng ưu tiên chiều tỏa nhiệt, tức chiều nghịch; màu hồng vì thế nhạt dần.",
   },
@@ -95,20 +97,21 @@ export const initialVideoQuestions: VideoQuestion[] = [
     fields: [
       {
         key: "a",
-        label: "Màu hồng (a) …",
+        label: "Màu hồng thay đổi như thế nào ?",
         acceptedAnswers: ["đậm dần", "đậm", "đậm lên", "đậm dần lên"],
       },
       {
         key: "b",
-        label: "Cân bằng chuyển dịch theo chiều (b) …",
+        label: "Cân bằng dịch chuyển theo chiều thuận hay nghịch ?",
         acceptedAnswers: ["thuận", "chiều thuận"],
       },
       {
         key: "c",
-        label: "Đó là chiều (c) …",
+        label: "Đó là chiều toả hay thu nhiệt ?",
         acceptedAnswers: ["thu nhiệt", "chiều thu nhiệt"],
       },
     ],
+    hint: "Chú ý biến thiên enthalpy (ΔH) của phản ứng.",
     explanation:
       "Khi tăng nhiệt độ, cân bằng ưu tiên chiều thu nhiệt, tức chiều thuận; màu hồng đậm dần.",
   },
@@ -507,6 +510,14 @@ export default function InteractiveVideoLesson({
                   </p>
                 </div>
               )}
+
+              {feedback === "incorrect" &&
+                activeQuestion.type === "fill" &&
+                activeQuestion.hint && (
+                  <div className="video-hint" role="note">
+                      💡 <span>Gợi ý: {activeQuestion.hint}</span>
+                  </div>
+                )}
 
               {feedback && (
                 <div
