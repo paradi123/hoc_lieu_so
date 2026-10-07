@@ -40,6 +40,10 @@ export default function App() {
     }
   }, [setVideoSource, videoSource])
   const [studentName, setStudentName] = useState("")
+  const [lastStartedName, setLastStartedName] = useLocalStorage(
+    "chemlab-last-student",
+    "",
+  )
   const [teacherPasscode, setTeacherPasscode] = useState("")
   const [showTeacherLogin, setShowTeacherLogin] = useState(false)
   const [teacherLoginError, setTeacherLoginError] = useState("")
@@ -170,6 +174,13 @@ export default function App() {
     const trimmedName = studentName.trim()
     if (!trimmedName) return
     setStudentName(trimmedName)
+    if (trimmedName !== lastStartedName) {
+      setSectionProgress({ knowledge: false, quiz: false, application: false })
+      setShowResults(false)
+      setCourseCompleted(false)
+      setEssayAnswer("")
+      setLastStartedName(trimmedName)
+    }
     setHasStarted(true)
   }
 
