@@ -1,4 +1,5 @@
 export const appConfig = {
-  studyMonitoringEnabled: false,
+  studyMonitoringEnabled: true,
+
   teacherAccessEnabled: false,
 } as const
